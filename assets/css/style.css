@@ -4,9 +4,9 @@
   ===============================
 */
 :root {
-    --cor-de-fundo: #13293D; /* Substituindo pelo Prussian Blue */
+    --cor-de-fundo: #006494; /* Substituindo pelo Prussian Blue */
     --cor-do-texto: #E8F1F2; /* Substituindo pelo Azure X11 */
-    --cor-de-fundo-menu: #006494; /* Substituindo pelo Sapphire Blue */
+    --cor-de-fundo-menu: #419ae3; /* Substituindo pelo Sapphire Blue */
     --cor-primaria: #1B98E0; /* Substituindo pelo Cerulean Blue */
     --cor-primaria-hover: #247BA0; /* Substituindo pelo Celadon Blue */
     --cor-do-link: #E8F1F2; /* Mantendo o contraste */
