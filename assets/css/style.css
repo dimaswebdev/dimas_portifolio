@@ -514,6 +514,21 @@ section {
     font-weight: bold;
 }
 
+.background-circle {
+    stroke: #ccc; /* Cor do círculo de fundo */
+    stroke-width: 10;
+    fill: none;
+}
+
+.progress-circle {
+    stroke-width: 10;
+    fill: none;
+    stroke-dashoffset: 0; /* Esconde o progresso no início */
+    stroke-linecap: round; /* Opção para deixar a borda arredondada */
+    transition: stroke-dashoffset 0.3s ease; /* Transição suave */
+}
+
+
 /*
   ===============================
   Seção de Hobbies

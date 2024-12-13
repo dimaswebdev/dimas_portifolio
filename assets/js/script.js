@@ -236,3 +236,77 @@ const nav = document.querySelector('.navegacao');
 toggleButton.addEventListener('click', () => {
     nav.classList.toggle('aberto');
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const habilidadesSection = document.querySelector("#habilidades-web");
+
+    // Configuração inicial: Apenas o círculo de fundo e o texto "0%"
+    function configurarGraficosIniciais() {
+        const skills = document.querySelectorAll(".skill-circle");
+        skills.forEach(skill => {
+            const skillName = skill.getAttribute("data-skill");
+
+            skill.innerHTML = `
+                <h2>${skillName}</h2>
+                <div class="circle-wrapper">
+                    <svg>
+                        <circle class="background-circle" cx="80" cy="80" r="70"></circle>
+                        <circle class="progress-circle" cx="80" cy="80" r="70" style="stroke-dashoffset: 0;"></circle>
+                    </svg>
+                    <div class="skill-percentage">0%</div>
+                </div>
+            `;
+        });
+    }
+
+    // Função para carregar gráficos com animação
+    function carregarGraficos() {
+        const skills = document.querySelectorAll(".skill-circle");
+        skills.forEach(skill => {
+            const percentage = skill.getAttribute("data-percentage");
+            const color = skill.getAttribute("data-color");
+
+            const progressCircle = skill.querySelector(".progress-circle");
+            const skillPercentage = skill.querySelector(".skill-percentage");
+
+            const radius = 70;
+            const circumference = 2 * Math.PI * radius;
+
+            // Configuração inicial do progresso
+            progressCircle.style.stroke = color;
+            progressCircle.style.strokeDasharray = circumference;
+            progressCircle.style.strokeDashoffset = circumference; // Totalmente escondido
+
+            // Animação do progresso
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (progress >= percentage) {
+                    clearInterval(interval); // Para a animação ao alcançar o valor final
+                } else {
+                    progress++;
+                    const offset = circumference - (progress / 100) * circumference;
+                    progressCircle.style.strokeDashoffset = offset;
+                    skillPercentage.textContent = `${progress}%`;
+                }
+            }, 30); // Controla a velocidade de incremento
+        });
+    }
+
+    // Intersection Observer para detectar visibilidade da seção de habilidades
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Aguarda 3 segundos e inicia o carregamento dos gráficos
+                setTimeout(carregarGraficos, 1000);
+                observer.disconnect(); // Desconecta o observer para evitar múltiplas execuções
+            }
+        });
+    }, { threshold: 0.5 }); // Ativa quando 50% da seção está visível
+
+    // Configura o estado inicial dos gráficos
+    configurarGraficosIniciais();
+    observer.observe(habilidadesSection);
+});
+
+
