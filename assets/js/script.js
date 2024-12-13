@@ -230,3 +230,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   });
   
+  const toggleButton = document.querySelector('.navegacao__toggle');
+const nav = document.querySelector('.navegacao');
+
+toggleButton.addEventListener('click', () => {
+    nav.classList.toggle('aberto');
+});

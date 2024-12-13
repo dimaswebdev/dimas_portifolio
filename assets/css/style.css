@@ -56,6 +56,24 @@ body {
     }
 }
 
+
+/* Aplica a altura da tela inteira para cada seção */
+section {
+    height: 100vh; /* Define a altura como 100% do viewport */
+    display: flex; /* Ativa o flexbox para centralizar o conteúdo */
+    flex-direction: column; /* Certifique-se de que os itens fiquem empilhados */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    padding: 20px; /* Espaçamento interno opcional */
+    box-sizing: border-box; /* Inclui padding no cálculo de altura */
+}
+@media (max-width: 768px) {
+    section {
+        height: auto; /* Deixe as seções com altura automática se o conteúdo for maior que a tela */
+    }
+}
+
+
 /*
   ===============================
   Cabeçalho e Navegação
@@ -117,6 +135,121 @@ body {
 .navegacao__elemento a:hover {
     color: var(--cor-primaria);
 }
+
+/* Estilo Base */
+.cabecalho__container {
+    display: flex;
+    background-color: var(--cor-de-fundo-menu);
+    border-bottom: 2px solid var(--cor-primaria);
+    align-items: center;
+    justify-content: space-between; /* Alinha logo e menu nas extremidades */
+    padding: 0 50px; /* Maior espaçamento interno para telas grandes */
+    width: 100%;
+    height: 150px;
+    position: relative; /* Para facilitar o posicionamento do menu dropdown */
+}
+
+.cabecalho__logo {
+    max-width: 80px; /* Tamanho proporcional para telas maiores */
+    animation: slideInLeft 1s ease-out;
+}
+
+.navegacao {
+    display: flex;
+    gap: 2rem;
+    align-items: center; /* Centraliza verticalmente os itens */
+    flex-grow: 1; /* Faz com que a navegação ocupe espaço proporcional */
+    justify-content: center; /* Centraliza o menu na largura disponível */
+}
+
+.navegacao__lista {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.navegacao__elemento a {
+    color: var(--cor-secundaria);
+    text-decoration: none;
+    font-size: 1.5rem; /* Fonte maior para telas grandes */
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.navegacao__elemento a:hover {
+    color: var(--cor-primaria);
+}
+
+/* Botão Hambúrguer */
+.navegacao__toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--cor-secundaria);
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cabecalho__container {
+        flex-direction: row; /* Elementos em linha */
+        justify-content: space-between; /* Logo à esquerda, botão à direita */
+        padding: 0 20px; /* Reduz espaçamento para telas pequenas */
+    }
+
+    .navegacao {
+        display: none; /* Esconde o menu inicialmente */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: var(--cor-de-fundo-menu);
+        position: absolute;
+        top: 150px; /* Alinha o menu abaixo do cabeçalho */
+        left: 0;
+        z-index: 1000;
+    }
+
+    .navegacao__lista {
+        flex-direction: column; /* Elementos empilhados */
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .navegacao__elemento a {
+        font-size: 1.5rem;
+    }
+
+    .navegacao__toggle {
+        display: block; /* Exibe o botão em telas pequenas */
+        margin-left: auto; /* Alinha o botão à direita */
+    }
+
+    .navegacao.aberto {
+        display: flex; /* Mostra o menu quando a classe "aberto" é adicionada */
+    }
+}
+
+/* Para telas grandes (acima de 1024px) */
+@media (min-width: 1024px) {
+    .cabecalho__container {
+        padding: 0 100px; /* Maior espaçamento interno */
+    }
+
+    .cabecalho__logo {
+        max-width: 80px; /* Tamanho maior para telas grandes */
+    }
+
+    .navegacao__lista {
+        gap: 3rem; /* Maior espaçamento entre itens do menu */
+    }
+
+    .navegacao__elemento a {
+        font-size: 1.8rem; /* Fonte mais destacada */
+    }
+}
+
+
 
 /*
   ===============================
@@ -207,6 +340,36 @@ body {
 .redes__elemento a:hover {
     color: var(--cor-primaria-hover);
 }
+
+
+.redes {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.redes__elemento a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.redes__elemento a:hover {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+.redes__icone {
+    font-size: 2rem; /* Ajuste o tamanho do ícone */
+    color: var(--cor-primaria); /* Use sua variável de cor ou defina uma cor fixa */
+    transition: color 0.3s ease;
+}
+
+.redes__icone:hover {
+    color: var(--cor-primaria-hover); /* Cor ao passar o mouse */
+}
+
 
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
@@ -613,6 +776,7 @@ body {
 @media (max-width: 768px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
+       
     }
 
     .gallery-web {
@@ -620,24 +784,19 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-web {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery, .gallery-web {
+        display: grid; /* Mantém o display grid */
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+        align-items: center;
+        margin: 0 auto;
+      }
+    
+      .gallery-web {
         display: flex;
-        flex-direction: column; /* Alinha os itens verticalmente */
-    }
+        flex-direction: column; 
+      }
 
-    .gallery-item, .gallery-web-item {
-        order: 1; /* Ordem padrão dos itens */
-        margin-bottom: 15px; /* Espaçamento entre os itens */
-    }
 }
 
 
