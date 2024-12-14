@@ -13,21 +13,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Botão "Voltar ao Topo"
-    const botaoTopo = document.querySelector("#botao-voltar-topo");
-    botaoTopo.innerHTML = "Topo";
+   // Botão "Voltar ao Topo"
+const botaoTopo = document.querySelector("#botao-voltar-topo");
 
-    window.addEventListener('scroll', function () {
-        botaoTopo.style.display = window.scrollY > 300 ? "block" : "none";
-    });
+window.addEventListener('scroll', function () {
+  botaoTopo.style.display = window.scrollY > 300 ? "flex" : "none"; // Usando "flex" para exibir o botão corretamente
+});
 
-    botaoTopo.addEventListener('click', function () {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
+botaoTopo.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
     // Validação do Formulário
     const formulario = document.querySelector(".contato__formulario");
     if (formulario) {

@@ -147,6 +147,7 @@ section {
     width: 100%;
     height: 150px;
     position: relative; /* Para facilitar o posicionamento do menu dropdown */
+    
 }
 
 .cabecalho__logo {
@@ -251,29 +252,48 @@ section {
 
 
 
-/*
+/* 
   ===============================
   Botão de Voltar ao Topo
   ===============================
 */
 #botao-voltar-topo {
+    all: unset;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: var(--cor-primaria);
-    color: #1e1e1e;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     cursor: pointer;
-    font-size: 1.5rem;
-    transition: background-color 0.3s;
-    display: none;
-}
-
-#botao-voltar-topo:hover {
-    background-color: var(--cor-primaria-hover);
-}
+    transition: transform 0.3s, opacity 0.3s; 
+  }
+  
+  #botao-voltar-topo:hover {
+    transform: scale(1.1); 
+  }
+  
+  #botao-voltar-topo img {
+    width: 65px;
+    height: 65px;
+    animation: pulse 1s infinite; 
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: translateY(0);  
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-10px); 
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0); 
+      opacity: 0.7;
+    }
+  }
 
 /*
   ===============================
@@ -283,22 +303,26 @@ section {
 .apresentacao {
     padding: 0;
     background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
+    position: relative;
+    
 }
 
 .apresentacao__container {
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Garante que a imagem fique colada à base */
     justify-content: space-between;
     flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
     gap: 30px;
+    height: 100vh; /* Preenche toda a altura da seção */
 }
 
 .apresentacao__foto--principal {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     height: auto;
-    z-index: 1000;
+    object-fit: cover;
     animation: slideInLeft 1s ease-out;
 }
 
@@ -306,10 +330,12 @@ section {
     max-width: 600px;
     margin: 20px;
     flex: 1;
+    text-align: left;
 }
 
 .apresentacao__titulo {
     font-size: 3.5rem;
+    
     color: var(--cor-do-link);
     font-weight: bold;
     margin-bottom: 20px;
@@ -326,27 +352,13 @@ section {
 .redes {
     list-style: none;
     display: flex;
+    flex-direction: column; /* Ícones na vertical */
     gap: 20px;
+    position: fixed; /* Fixar na tela */
+    top: 200px; /* Ajustar a distância do topo */
+    left: 20px; /* Ajustar a distância da esquerda */
+    z-index: 1000; /* Garantir que fique acima de outros elementos */
     animation: slideInLeft 1s ease-out;
-}
-
-.redes__elemento a {
-    color: var(--cor-primaria);
-    text-decoration: none;
-    font-size: 1.5rem;
-    transition: color 0.3s;
-}
-
-.redes__elemento a:hover {
-    color: var(--cor-primaria-hover);
-}
-
-
-.redes {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    justify-content: flex-start;
 }
 
 .redes__elemento a {
@@ -361,8 +373,8 @@ section {
 }
 
 .redes__icone {
-    font-size: 2rem; /* Ajuste o tamanho do ícone */
-    color: var(--cor-primaria); /* Use sua variável de cor ou defina uma cor fixa */
+    font-size: 2rem;
+    color: white; /* Use sua variável de cor ou defina uma cor fixa */
     transition: color 0.3s ease;
 }
 
@@ -370,23 +382,26 @@ section {
     color: var(--cor-primaria-hover); /* Cor ao passar o mouse */
 }
 
-
 /* Responsividade para telas menores */
 @media (max-width: 768px) {
     .apresentacao__container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
         text-align: center;
         gap: 20px;
+        height: auto; /* Ajusta para caber o conteúdo em telas menores */
     }
 
     .apresentacao__foto--principal {
-        order: 2;
         width: 100%;
         max-width: 400px;
         height: auto;
         object-fit: cover;
-        margin-top: 20px;
+    }
+
+    .apresentacao__container-info {
+        max-width: 90%;
+        text-align: center;
     }
 
     .apresentacao__titulo {
@@ -401,11 +416,10 @@ section {
         gap: 15px;
         justify-content: center;
     }
-
-    .redes__elemento a {
-        font-size: 1rem;
-    }
 }
+
+
+
 
 
 /*
