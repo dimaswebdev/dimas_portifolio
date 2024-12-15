@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="./assets/img/dimas-designer-logo.png" type="image/x-icon"> 
 
     <!-- Fonte do Projeto Raleway -->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
@@ -16,24 +17,45 @@
 
 <body>
     <!-- Menu -->
-<header class="cabecalho">
-    <div class="cabecalho__container">
-        <img class="cabecalho__logo" src="./assets/img/dimas-logo.png" alt="Logo-dimas">
-        <button class="navegacao__toggle" aria-label="Abrir menu">
-            &#9776;
-        </button>
-        <nav class="navegacao">
-            <ul class="navegacao__lista">
-                <li class="navegacao__elemento"><a href="#sobre-mim">Sobre mim</a></li>
-                <li class="navegacao__elemento"><a href="#habilidades-web">Habilidades</a></li>
-                
-                <li class="navegacao__elemento"><a href="#formacao">Formação</a></li>
-                <li class="navegacao__elemento"><a href="#projetos">Projetos</a></li>
-                <li class="navegacao__elemento"><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    <header class="cabecalho">
+        <div class="cabecalho__container">
+            <!-- Logo -->
+            <img class="cabecalho__logo" src="./assets/img/dimas-logo.png" alt="Logo-dimas">
+    
+            <!-- Redes sociais (aparecem apenas em telas pequenas) -->
+            <div class="cabecalho__redes">
+                <a href="https://github.com/dimaswebdev" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/dimas" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://instagram.com/dimasdesign" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="./assets/curriculo.pdf" target="_blank" aria-label="Currículo">
+                    <i class="fas fa-file-alt"></i>
+                </a>
+            </div>
+    
+            <!-- Botão Hamburguer -->
+            <button class="navegacao__toggle" aria-label="Abrir menu">
+                &#9776;
+            </button>
+    
+            <!-- Navegação -->
+            <nav class="navegacao">
+                <ul class="navegacao__lista">
+                    <li class="navegacao__elemento"><a href="#sobre-mim">Sobre mim</a></li>
+                    <li class="navegacao__elemento"><a href="#habilidades-web">Habilidades</a></li>
+                    <li class="navegacao__elemento"><a href="#formacao">Formação</a></li>
+                    <li class="navegacao__elemento"><a href="#projetos">Projetos</a></li>
+                    <li class="navegacao__elemento"><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
 
 
    <!-- Seção de Apresentação -->
