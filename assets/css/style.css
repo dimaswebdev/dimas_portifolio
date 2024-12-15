@@ -60,6 +60,7 @@ Variáveis e Reset Básico
     justify-content: center;
     align-items: center;
     padding: 20px; 
+    border-bottom: 1px solid white; /* Adiciona borda inferior */
   }
   
   @media (max-width: 768px) {
@@ -406,12 +407,13 @@ Variáveis e Reset Básico
 .apresentacao__container {
     display: flex;
     align-items: flex-end;
-    border-bottom: 1px solid white; 
+    
     justify-content: space-between;
     flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
     gap: 30px;
+    
     min-height: 100vh; /* Altura mínima da tela */
 }
 
@@ -475,7 +477,7 @@ Variáveis e Reset Básico
 }
 
 .redes__icone:hover {
-    color: var(--cor-primaria-hover); 
+    transform: scale(1.2);  
 }
 
 /* Ajustes para telas menores */
@@ -555,6 +557,7 @@ Variáveis e Reset Básico
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    
   }
   
   .sobre-mim__foto {
@@ -570,7 +573,7 @@ Variáveis e Reset Básico
   
   .sobre-mim__titulo {
     font-size: 2rem;
-    color: var(--cor-primaria);
+    color: white;
     margin-bottom: 20px;
     animation: slideInRight 1s ease-out;
   }
@@ -599,7 +602,7 @@ Variáveis e Reset Básico
   =============================== */
   .habilidades {
     padding: 50px;
-    background-color: var(--cor-de-fundo);
+    background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
     animation: slideInLeft 1s ease-out;
   }
   
@@ -610,7 +613,7 @@ Variáveis e Reset Básico
   
   .habilidades__titulo {
     font-size: 2rem;
-    color: var(--cor-primaria);
+    color: white;
     margin-bottom: 20px;
     animation: slideInLeft 1s ease-out;
   }
@@ -668,7 +671,7 @@ Variáveis e Reset Básico
   
   .hobbies__titulo {
     font-size: 2rem;
-    color: var(--cor-primaria);
+    color: white;
     margin-bottom: 20px;
     animation: slideInRight 1s ease-out;
   }
@@ -702,7 +705,7 @@ Variáveis e Reset Básico
   =============================== */
   .formacao {
     padding: 50px;
-    background-color: var(--cor-de-fundo);
+    background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
     animation: slideInLeft 1s ease-out;
   }
   
@@ -713,7 +716,7 @@ Variáveis e Reset Básico
   
   .formacao__titulo {
     font-size: 2rem;
-    color: var(--cor-primaria);
+    color: white;
     margin-bottom: 20px;
     animation: slideInLeft 1s ease-out;
   }
@@ -762,7 +765,7 @@ Variáveis e Reset Básico
   
   .projetos__titulo {
     font-size: 2rem;
-    color: var(--cor-primaria);
+    color: white;
     margin-bottom: 20px;
     animation: slideInRight 1s ease-out;
   }
@@ -932,8 +935,8 @@ Variáveis e Reset Básico
   =============================== */
   .contato {
     padding: 50px;
-    background-color: var(--cor-de-fundo);
-    color: var(--cor-do-texto);
+    background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
+    color: white;
     animation: slideInLeft 1s ease-out;
   }
   
@@ -944,7 +947,7 @@ Variáveis e Reset Básico
   
   .contato__titulo {
     font-size: 2rem;
-    color: var(--cor-primaria);
+    color: white;
     margin-bottom: 20px;
     animation: slideInLeft 1s ease-out;
   }
