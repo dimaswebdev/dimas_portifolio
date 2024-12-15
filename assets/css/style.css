@@ -83,6 +83,7 @@ Variáveis e Reset Básico
     position: relative;
 }
 
+
 .cabecalho__logo {
     max-width: 50px; /* Reduzido proporcionalmente */
     animation: slideInLeft 1s ease-out;
@@ -115,9 +116,25 @@ Variáveis e Reset Básico
     cursor: pointer;
 }
 
-.navegacao__elemento a:hover {
-    color: var(--cor-primaria);
+.navegacao__elemento a {
+    color: var(--cor-secundaria);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+    display: inline-block; /* Necessário para o efeito de fundo ocupar espaço */
+    padding: 0 1rem; /* Adiciona espaçamento horizontal */
+    height: 100%; /* Faz o link ocupar a altura do cabeçalho */
+    line-height: 70px; /* Alinha o texto verticalmente ao centro */
 }
+
+.navegacao__elemento a:hover {
+    color: white; /* Cor do texto ao passar o mouse */
+    background-color: white; /* Fundo amarelo */
+    height: 70px; /* Certifica que a altura do fundo cobre o cabeçalho */
+}
+
+
+
 
 .navegacao__elemento:not(:last-child)::after {
     content: "|"; /* Adiciona a barra vertical */
@@ -219,7 +236,7 @@ Variáveis e Reset Básico
 
 /* Logo */
 .cabecalho__logo {
-    max-width: 50px; /* Ajusta tamanho proporcional */
+    max-width: 180px; /* Ajusta tamanho proporcional */
     animation: slideInLeft 1s ease-out;
     width: 40px;
     height: 40px;
