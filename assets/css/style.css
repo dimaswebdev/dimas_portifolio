@@ -1141,24 +1141,24 @@ circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* Espaçamento entre logo e texto */
-  max-width: 1200px; /* Largura máxima para centralizar */
-  margin-top: 450px;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 440px auto 0;
 }
 
 .rodape__logo {
-  width: 25px;     /* Ajuste conforme necessário */
-  height: auto;    /* Mantém a proporção da imagem */
+  width: 25px;
+  height: auto;
 }
 
 .rodape__texto {
-  color: var(--cor-secundaria); /* ou outra cor, de acordo com o tema */
-  font-size: 1rem;              /* Ajuste do tamanho da fonte */
+  color: var(--cor-secundaria);
+  font-size: 1rem;
 }
-/* Responsividade do Rodapé */
+
 @media (max-width: 768px) {
   .rodape__container {
-    flex-direction: column; 
-    margin: 30px auto 0; /* Ajusta margem superior para telas menores */
+    flex-direction: column;
+    margin: 30px auto 0;
   }
 }
