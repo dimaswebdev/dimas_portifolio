@@ -994,6 +994,7 @@ color: white;
 .contato__botao {
     width: 100%;
 }
+
 }
 
 .chart-circle {
@@ -1131,4 +1132,33 @@ circle {
 .circle-wrapper {
   position: relative;
   display: inline-block;
+}
+
+
+/* Rodapé  */
+
+.rodape__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Espaçamento entre logo e texto */
+  max-width: 1200px; /* Largura máxima para centralizar */
+  margin-top: 450px;
+}
+
+.rodape__logo {
+  width: 25px;     /* Ajuste conforme necessário */
+  height: auto;    /* Mantém a proporção da imagem */
+}
+
+.rodape__texto {
+  color: var(--cor-secundaria); /* ou outra cor, de acordo com o tema */
+  font-size: 1rem;              /* Ajuste do tamanho da fonte */
+}
+/* Responsividade do Rodapé */
+@media (max-width: 768px) {
+  .rodape__container {
+    flex-direction: column; 
+    margin: 30px auto 0; /* Ajusta margem superior para telas menores */
+  }
 }
