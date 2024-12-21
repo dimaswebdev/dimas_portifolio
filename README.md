@@ -1,26 +1,29 @@
-# Challenge ONE | Front End - Portfólio
----
+# Portfólio Dimas
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/168887837-b6d26532-6782-48dc-92eb-e48bf6c57a15.png">
-</p>
+<img src="./assets/img/portifolio-dimas.jpg" alt="Projeto Web 1" data-index="0">
 
-###  Primeiros Passos:
----
-#### 🔹Marque esse projeto com uma ⭐
-#### 🔹Siga as orientações do que temos neste repositório 📚
+## Sobre o Projeto
 
+Este portfólio foi desenvolvido para apresentar as habilidades, projetos e experiências do **Dimas**, que atua como Designer Gráfico e Web Developer. Nele, você encontrará:
 
-### Analisando nosso repositório!
----
-### Este repositório base é uma sugestão inicial, caso você ainda não tenha um layout que reflita seu estilo e personalidade. Sinta-se à vontade para modificar seu portfólio conforme desejar, aqui você encontrará:
-#### 🔹index.html: Documento HTML finalizado que você pode utilizar em seu projeto. Fonte, CSS e JavaScript já linkado e todas as sessões comentadas. Sinta-se a vontade para executar o seu próprio HTML caso deseje;
-#### 🔹style.css: Documento de CSS com instruções de estilo e também algumas sugestões para seu desenvolvimento
-#### 🔹script.js: Documento vazio para que possa aplicar sua lógica de validação de formulário. ESSA VALIDAÇÃO É CONSIDERADA UM DESAFIO EXTRA POR ISSO NÃO É OBRIGATORIA SUA IMPLEMENTAÇÃO.
-#### Ao clonar, ou realizar o download do projeto base, você tera essa apresentação:
+- **Seção de Apresentação**: Uma breve introdução sobre o perfil profissional de Dimas.
+- **Seção Sobre Mim**: Informações sobre a formação em Artes Visuais, atuação no Corpo de Bombeiros Militar de Mato Grosso do Sul e vivências na área de design.
+- **Seção de Habilidades**: Competências na área de Desenvolvimento Web (HTML, CSS, JavaScript, React) e em Design Gráfico (Photoshop, Illustrator, UI/UX, 3D).
+- **Seção de Hobbies**: Atividades preferidas que mostram um pouco da personalidade e interesses.
+- **Seção de Formação**: Instituições e cursos concluídos para embasar o conhecimento adquirido.
+- **Seção de Projetos**: Galerias de criações em Design Gráfico, Ilustração e Desenvolvimento Web.
+- **Seção de Contato**: Formulário simples para entrar em contato direto.
 
+## Tecnologias Utilizadas
 
-<p align="center" >
-     <img width="600" heigth="600" src="https://user-images.githubusercontent.com/101413385/168888313-d031e9e1-1449-4b73-bd3c-3102223097f3.png">
-</p>
+- **HTML5** e **CSS3** para a estrutura e estilização das páginas;
+- **JavaScript** para adicionar interatividade e funcionalidades;
+- **Font Awesome** para ícones;
+- **Snap.svg** (biblioteca JavaScript) em conjunto com **jQuery** (em alguns trechos);
+- **Git** e **GitHub** para versionamento de código.
 
+## Como Executar o Projeto
+
+1. **Clone** este repositório em seu ambiente local:
+   ```bash
+   git clone https://github.com/SEU-USUARIO/seu-repositorio.git
