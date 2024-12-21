@@ -257,7 +257,8 @@ Variáveis e Reset Básico
 }
 
 .cabecalho__redes a:hover {
-    color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    
 }
 
 /* Botão Hamburguer */
@@ -423,6 +424,7 @@ Variáveis e Reset Básico
     height: auto;
     object-fit: cover;
     animation: slideInLeft 1s ease-out;
+    margin-left: -100px;
 }
 
 .apresentacao__container-info {
@@ -430,6 +432,8 @@ Variáveis e Reset Básico
     margin: 20px;
     flex: 1;
     text-align: left;
+    align-self: flex-start;
+    margin-top: 280px;
 }
 
 .apresentacao__titulo {
@@ -478,7 +482,7 @@ Variáveis e Reset Básico
 
 .redes__icone:hover {
     transform: scale(1.2);
-    color: #f5c14a;  
+    color: white;  
 }
 
 /* Ajustes para telas menores */
@@ -537,6 +541,7 @@ Variáveis e Reset Básico
     .redes__icone {
         font-size: 1.5rem; /* Ajusta o tamanho dos ícones */
         display: none;
+        
         
     }
 }
@@ -598,63 +603,68 @@ Variáveis e Reset Básico
     }
   }
   
-  /* ===============================
+ /* ===============================
   Seção de Habilidades
   =============================== */
-  .habilidades {
-    padding: 50px;
-    background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
-    animation: slideInLeft 1s ease-out;
-  }
-  
-  .habilidades__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .habilidades__titulo {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 20px;
-    animation: slideInLeft 1s ease-out;
-  }
-  
-  .habilidades__lista {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-    gap: 30px;
-    animation: slideInLeft 1s ease-out;
-  }
-  
-  .habilidades__elemento {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .habilidades__icone {
-    width: 80px;
-    margin-bottom: 10px;
-  }
-  
-  .habilidades__nome {
-    color: var(--cor-do-texto);
-    font-weight: bold;
-  }
-  
-  .background-circle {
-    stroke: #ccc; 
-    stroke-width: 10;
-    fill: none;
-  }
-  
-  .progress-circle {
-    stroke-width: 10;
-    fill: none;
-    stroke-dashoffset: 0; 
-    stroke-linecap: round; 
-    transition: stroke-dashoffset 0.3s ease; 
-  }
+.habilidades {
+  padding: 50px;
+  background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
+  animation: slideInLeft 1s ease-out;
+}
+
+.habilidades__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom:100px ;
+}
+
+.habilidades__titulo {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+  animation: slideInLeft 1s ease-out;
+}
+
+.habilidades__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+  gap: 30px;
+  animation: slideInLeft 1s ease-out;
+}
+
+.habilidades__elemento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.habilidades__icone {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.habilidades__nome {
+  color: var(--cor-do-texto);
+  font-weight: bold;
+}
+
+/* Círculo de fundo e progresso */
+.background-circle {
+  stroke: white; /* Fundo do círculo em branco */
+  stroke-width: 2px; /* Espessura fina do círculo de fundo */
+  fill: none;
+}
+
+.progress-circle {
+  stroke: white; /* Gráfico em branco */
+  stroke-width: 9px; /* Espessura maior para o progresso */
+  fill: none;
+  stroke-dasharray: 100; /* Configuração padrão para o círculo */
+  stroke-dashoffset: 0; 
+  stroke-linecap: round; /* Arredondado no final do progresso */
+  transition: stroke-dashoffset 0.3s ease; /* Animação suave */
+}
+
   
   /* ===============================
   Seção de Hobbies
@@ -673,14 +683,14 @@ Variáveis e Reset Básico
   .hobbies__titulo {
     font-size: 2rem;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 120px;
     animation: slideInRight 1s ease-out;
   }
   
   .hobbies__lista {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 90px;
     animation: slideInRight 1s ease-out;
     justify-content: center;
   }
@@ -692,13 +702,18 @@ Variáveis e Reset Básico
   }
   
   .hobbies__icone {
-    width: 80px;
-    margin-bottom: 10px;
+    width: 120px;
+    margin-bottom: 80px;
+  }
+  .hobbies__icone:hover {
+    transform: scale(1.2);
+    color: white; 
   }
   
   .hobbies__nome {
     color: var(--cor-do-texto);
-    font-weight: bold;
+    font-weight: none;
+    font-size:20px ;
   }
   
   /* ===============================
@@ -718,7 +733,7 @@ Variáveis e Reset Básico
   .formacao__titulo {
     font-size: 2rem;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     animation: slideInLeft 1s ease-out;
   }
   
@@ -726,7 +741,7 @@ Variáveis e Reset Básico
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 80px;
     animation: slideInLeft 1s ease-out;
   }
   
@@ -737,7 +752,7 @@ Variáveis e Reset Básico
   }
   
   .formacao__icone {
-    width: 50px;
+    width: 150px;
   }
   
   .formacao__nome {
@@ -762,6 +777,7 @@ Variáveis e Reset Básico
   .projetos__container {
     max-width: 1200px;
     margin: 0 auto;
+  
   }
   
   .projetos__titulo {
@@ -781,6 +797,7 @@ Variáveis e Reset Básico
     color: var(--cor-do-texto);
     margin-bottom: 10px;
     animation: slideInRight 1s ease-out;
+    border-bottom: 1px solid white;
   }
   
   .projetos__descricao {
@@ -790,16 +807,24 @@ Variáveis e Reset Básico
   
   .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta automaticamente para caber na tela */
+    gap: 15px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box; /* Garante que padding e borda sejam considerados no tamanho */
+   
+    
+    
   }
   
   .gallery-item {
     position: relative;
+    padding: 12px; /* Espaço entre a imagem e a borda */
     width: 302.98px;
     height: 256px;
     overflow: hidden;
+    border: 1px solid var(--cor-secundaria);
+    
   }
   
   .gallery img {
@@ -934,56 +959,124 @@ Variáveis e Reset Básico
   /* ===============================
   Seção de Contato
   =============================== */
-  .contato {
-    padding: 50px;
-    background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
-    color: white;
-    animation: slideInLeft 1s ease-out;
-  }
-  
-  .contato__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .contato__titulo {
-    font-size: 2rem;
-    color: white;
-    margin-bottom: 20px;
-    animation: slideInLeft 1s ease-out;
-  }
-  
+.contato {
+  padding: 50px;
+  background: radial-gradient(circle, rgba(56, 208, 221, 1), rgba(89, 138, 229, 1));
+  color: white;
+  animation: slideInLeft 1s ease-out;
+}
+
+.contato__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contato__titulo {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+  animation: slideInLeft 1s ease-out;
+}
+
+.contato__formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+  margin: 0 auto;
+  animation: slideInLeft 1s ease-out;
+  align-items: center; /* Centraliza os elementos no eixo horizontal */
+}
+
+/* Campo de formulário padrão */
+.contato__campo {
+  padding: 15px;
+  border: 1px solid var(--cor-secundaria); /* Cor da borda padrão */
+  border-radius: 0px;
+  font-size: 1rem;
+  background-color: white;
+  color: #1e1e1e;
+  width: 100%; /* Garante que ocupe toda a largura do formulário */
+  transition: border-color 0.3s ease-in-out; /* Suaviza a transição */
+}
+
+/* Alterar cor da borda quando o campo está focado (ativo) */
+.contato__campo:focus {
+  border-color: var(--cor-primaria); /* Define a nova cor da borda ao focar */
+  outline: none; /* Remove o contorno padrão do navegador */
+}
+
+
+
+.contato__campo:focus::placeholder {
+  color: var(--cor-primaria); /* Cor do placeholder ao focar */
+}
+
+.contato__campo--textarea{
+  color: #1e1e1e;
+
+
+}
+
+.contato__botao {
+  width: 250px;
+  padding: 15px;
+  background-color: white;
+  color: #1e1e1e;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center; /* Centraliza o texto do botão */
+}
+
+.contato__botao:hover {
+  background-color: var(--cor-primaria);
+  color: white;
+}
+/* ===============================
+   Responsividade
+   =============================== */
+
+/* Telas médias (tablets e dispositivos intermediários) */
+@media (max-width: 768px) {
   .contato__formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    animation: slideInLeft 1s ease-out;
+      width: 100%; /* O formulário ocupa toda a largura disponível */
+      padding: 0 15px; /* Adiciona espaço nas laterais para não encostar na borda */
   }
-  
+
+  .contato__titulo {
+      font-size: 1.8rem; /* Ajusta o tamanho do título */
+  }
+
   .contato__campo {
-    padding: 15px;
-    border: 1px solid var(--cor-secundaria);
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #2a2d3a;
-    color: var(--cor-do-texto);
+      font-size: 0.9rem; /* Reduz o tamanho do texto nos campos */
   }
-  
+}
+
+/* Telas pequenas (smartphones) */
+@media (max-width: 500px) {
+  .contato {
+      padding: 30px; /* Reduz o padding geral da seção */
+  }
+
+  .contato__titulo {
+      font-size: 1.5rem; /* Reduz o tamanho do título */
+      text-align: center; /* Centraliza o título */
+  }
+
+  .contato__formulario {
+      gap: 15px; /* Reduz o espaçamento entre os elementos */
+      padding: 0 10px; /* Garante espaço nas laterais do formulário */
+  }
+
+  .contato__campo {
+      font-size: 0.8rem; /* Reduz o tamanho do texto nos campos */
+  }
+
   .contato__botao {
-    padding: 15px;
-    background-color: var(--cor-primaria);
-    color: #1e1e1e;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+      width: 100%; /* Botão ocupa toda a largura do formulário */
   }
-  
-  .contato__botao:hover {
-    background-color: var(--cor-primaria-hover);
-  }
+}
   
   /* ===============================
   Gráficos de Círculo
@@ -1083,6 +1176,8 @@ Variáveis e Reset Básico
       max-height: 150px;
     }
   }
+
+  
   
   .skills-container {
     display: flex;
@@ -1108,11 +1203,11 @@ Variáveis e Reset Básico
   }
   
   .background-circle {
-    stroke: #333;
+    stroke: white;
   }
   
   .progress-circle {
-    stroke: #f5c14a;
+  
     stroke-linecap: round;
     transition: stroke-dashoffset 1s ease-out;
   }
