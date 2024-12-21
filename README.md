@@ -1,4 +1,4 @@
-# Portfólio Dimas
+# Portfólio do Dimas
 
 <img src="./assets/img/portifolio-dimas.jpg" alt="Projeto Web 1" data-index="0">
 
