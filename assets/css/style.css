@@ -477,7 +477,8 @@ Variáveis e Reset Básico
 }
 
 .redes__icone:hover {
-    transform: scale(1.2);  
+    transform: scale(1.2);
+    color: #f5c14a;  
 }
 
 /* Ajustes para telas menores */
