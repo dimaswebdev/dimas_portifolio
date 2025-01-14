@@ -684,7 +684,10 @@ section {
     stroke-width: 4px; /* Ajusta para telas muito pequenas */
   }
 }
-
+svg {
+  width: 100%;
+  height: auto;
+}
 .skills-container {
   display: flex;
   flex-wrap: wrap;
