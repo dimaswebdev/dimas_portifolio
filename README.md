@@ -1,34 +1,52 @@
-# Portfólio Dimas — revisão V2
+# Portfólio Dimas — revisão técnica V2
 
-Portfólio de design gráfico, ilustração e desenvolvimento web, originado no programa Oracle ONE / Alura.
+Versão evolutiva do portfólio criado durante o programa Oracle ONE / Alura.
 
-## Visualização
+## Preservação do projeto
 
-Abra `index.html` em um navegador ou use um servidor estático local (por exemplo, `python -m http.server 8000`).
+- `main`: projeto educacional original, preservado.
+- `feature/portfolio-v2`: revisão técnica e visual independente.
+- [Pull Request de revisão](https://github.com/dimaswebdev/dimas_portifolio/pull/1) (não mesclar sem aprovação).
 
-## Tecnologias
+## Execução local
 
-HTML5, CSS3, JavaScript sem framework e Font Awesome.
+É um site estático (HTML, CSS e JavaScript). Pode ser aberto por servidor estático:
 
-## Principais melhorias nesta branch
+```bash
+python -m http.server 8000
+```
 
-- Corrigido caminho relativo para carregamento de JavaScript em hospedagem por subdiretório.
-- Menu mobile com estado acessível e navegação suave.
-- Galeria ampliável com navegação por teclado, Escape e retorno do foco.
-- Gráficos SVG sem intervalos repetitivos e com descrição acessível.
-- Correções de CSS responsivo, foco visível e preferência por movimento reduzido.
-- Metadados básicos de SEO e hierarquia de cabeçalhos.
-- Removidas importações de jQuery e Snap.svg que não eram usadas.
-- Removido formulário sem integração real; contatos profissionais agora são links funcionais.
+Em seguida, visitar `http://localhost:8000`.
 
-## Pendências para revisão humana
+## Melhorias implementadas
 
-- Confirmar textos e experiências profissionais atuais.
-- Substituir links de contato ou integrar formulário com serviço aprovado.
-- Verificar direitos de uso das imagens e conferir conteúdos.
-- Executar teste visual em navegadores e dispositivos reais.
-- Revisar métricas de desempenho e contraste com ferramentas automatizadas.
+- Caminhos relativos adequados à publicação em subdiretório.
+- Refatoração do CSS, com estilos consolidados e breakpoints responsivos.
+- Gráficos SVG animados e repetíveis ao retornar à área visível.
+- Galeria ampliável, navegação por setas, fechamento por Escape e retorno do foco.
+- Menu mobile acessível e navegação por âncoras.
+- Atalho "Pular para o conteúdo", área principal semântica e foco visível.
+- Metadados básicos de SEO e melhorias nas descrições das imagens.
+- Carregamento sob demanda de imagens abaixo da primeira tela.
+- Remoção de dependências JavaScript desnecessárias.
+- Contatos funcionais em lugar do antigo formulário sem mecanismo de envio.
 
-## Preservação do projeto educacional
+## Verificações estáticas realizadas
 
-A versão educacional permanece na branch `main`. Esta evolução está na `feature/portfolio-v2`. Não mesclar sem aprovação.
+- Sintaxe do JavaScript: aprovada.
+- Delimitadores de CSS: consistentes.
+- IDs HTML: sem duplicações.
+- Links de navegação interna: destinos existentes.
+- Presença da lógica de repetição dos gráficos: confirmada.
+
+## Validação ainda necessária
+
+- Inspecionar visualmente todos os componentes em celular, tablet e desktop após refatoração.
+- Testar a galeria e navegação por teclado em navegadores reais.
+- Executar Lighthouse, auditoria WCAG e verificar contraste efetivo.
+- Converter/comprimir arquivos de imagem pesados após revisão visual; os originais ainda estão no repositório.
+- Conferir disponibilidade e adequação dos canais de contato.
+- Revisar direitos e informações do currículo, fotografias e projetos.
+- Avaliar substituição de Font Awesome por ícones locais, se necessário.
+
+A versão educacional original continua intacta na branch `main`.
