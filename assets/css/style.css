@@ -1325,3 +1325,48 @@ section { scroll-margin-top: 85px; }
 /* Animação controlada por requestAnimationFrame para compatibilidade móvel. */
 .skill-circle .progress-circle { transition: none; }
 .skill-circle .skill-percentage { font-variant-numeric: tabular-nums; }
+
+
+/* Gráficos SVG: faixa de progresso legível também em smartphones.
+   Regras específicas evitam conflitos com estilos antigos de svg/circle. */
+.habilidades .skill-circle .circle-wrapper {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 160px;
+  height: 160px;
+}
+.habilidades .skill-circle .circle-wrapper svg {
+  display: block;
+  width: 160px;
+  height: 160px;
+  overflow: visible;
+  transform: rotate(-90deg);
+}
+.habilidades .skill-circle .circle-wrapper circle {
+  fill: none;
+  stroke-width: 10px;
+}
+.habilidades .skill-circle .circle-wrapper .background-circle {
+  stroke: rgba(5, 64, 104, 0.45);
+}
+.habilidades .skill-circle .circle-wrapper .progress-circle {
+  stroke: #ffffff;
+  stroke-width: 12px;
+  stroke-linecap: round;
+  transition: none;
+}
+.habilidades .skill-circle .circle-wrapper .skill-percentage {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 35, 62, 0.5);
+}
+@media (max-width: 480px) {
+  .habilidades .skill-circle {
+    width: min(100%, 200px);
+  }
+  .habilidades .skill-circle .circle-wrapper,
+  .habilidades .skill-circle .circle-wrapper svg {
+    width: 160px;
+    height: 160px;
+  }
+}
