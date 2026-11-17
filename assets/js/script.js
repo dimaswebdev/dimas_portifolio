@@ -59,6 +59,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   scheduleNavigationSync();
 
+  // Desliga o encaixe nas seções que não cabem na janela,
+  // permitindo leitura até o final sem prender ou cortar conteúdo.
+  const allSections = [...document.querySelectorAll("main > section")];
+  let layoutFrame = null;
+  function syncSectionFits() {
+    layoutFrame = null;
+    const desktop = window.matchMedia("(min-width: 1024px)").matches;
+    const usable = Math.max(0, window.innerHeight - 70);
+    allSections.forEach(section => {
+      section.classList.toggle("is-overflowing", desktop && section.scrollHeight > usable + 12);
+    });
+  }
+  function scheduleSectionFits() {
+    if (layoutFrame === null) layoutFrame = requestAnimationFrame(syncSectionFits);
+  }
+  window.addEventListener("resize", scheduleSectionFits);
+  window.addEventListener("load", scheduleSectionFits);
+  document.fonts?.ready?.then(scheduleSectionFits);
+  scheduleSectionFits();
+
   const topButton = document.getElementById("botao-voltar-topo");
   const syncTop = () => { if (topButton) topButton.hidden = window.scrollY <= 300; };
   window.addEventListener("scroll", syncTop, { passive: true });
