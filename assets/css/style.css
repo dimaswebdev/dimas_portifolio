@@ -1321,3 +1321,7 @@ section { scroll-margin-top: 85px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Animação controlada por requestAnimationFrame para compatibilidade móvel. */
+.skill-circle .progress-circle { transition: none; }
+.skill-circle .skill-percentage { font-variant-numeric: tabular-nums; }
