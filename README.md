@@ -63,3 +63,17 @@ Para Lighthouse, execute `node scripts/serve.mjs` em outro terminal e, depois, `
 - Comprimir imagens principais e gerar WebP/AVIF compatíveis sem perder qualidade
 - Revisar descrições e links de cada projeto com estudos de caso reais
 - Configurar domínio personalizado e indicadores de Core Web Vitals
+
+## Mascote atualizado — recorte transparente
+
+A nova composição do mascote foi preparada a partir da imagem original enviada pelo autor, em versões PNG com alfa (2048×2048) e WebP com transparência (2048×2048, cerca de 485 KB). O arquivo binário ainda precisa ser enviado ao GitHub para estar disponível no site.
+
+Procedimento de publicação (somente em `portfolio-v3`):
+
+1. Enviar `dimas_mascote_v3.webp` para `assets/img/dimas_mascote_v3.webp`.
+2. Em `index.html`, na imagem `class="mascot"` da seção `#inicio`, substituir `./assets/img/dimas-3d.png` por `./assets/img/dimas_mascote_v3.webp`.
+3. Substituir também o `href` do `preload` da imagem e, se apropriado, a imagem Open Graph.
+4. Manter a máscara suave inferior existente em `assets/css/v3.css`; conferir contraste com o gradiente e executar testes responsivos.
+5. Confirmar que a Vercel criou um deployment `READY`.
+
+**Importante:** não apontar o HTML para o novo caminho antes de enviar o arquivo binário, para evitar imagem quebrada. As outras branches não devem ser modificadas.
