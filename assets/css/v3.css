@@ -440,3 +440,24 @@ h1,h2,h3{font-family:var(--serif-title);font-weight:700;letter-spacing:-.048em}
 .contact .btn-outline{color:#00527e;border-color:#006494;background:#ffffff6b}
 .contact .btn-outline:hover{background:white}
 @media(max-width:900px){.hero{background:linear-gradient(160deg,#d5edff,#88d7ee 65%,#b6d6ff)}}
+
+/* Logo original é branca e transparente: base azul discreta mantém legibilidade. */
+.brand{
+  flex:0 0 61px;width:61px;height:62px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#419ae3,#006494);
+  border-radius:6px;
+  transition:box-shadow .2s,transform .2s;
+}
+.brand img{width:45px;height:49px;filter:none}
+.brand:hover{box-shadow:0 4px 15px rgba(0,100,148,.16)}
+.footer-brand img{
+  background:linear-gradient(145deg,#419ae3,#006494);
+  padding:7px;
+  border-radius:6px;
+  width:48px;height:53px;
+}
+@media(max-width:900px){
+  .brand{width:55px;height:57px;flex-basis:55px}
+  .brand img{width:41px;height:45px}
+}
