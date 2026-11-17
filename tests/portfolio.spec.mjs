@@ -27,7 +27,8 @@ for (const size of [{ name:"desktop",width:1440,height:900 },{ name:"notebook",w
   test("Layout sem overflow horizontal: "+size.name, async () => {
     const page=await browser.newPage({viewport:{width:size.width,height:size.height},reducedMotion:"reduce"});
     try {
-      await page.goto(base,{waitUntil:"networkidle"});
+      await page.goto(base,{waitUntil:"domcontentloaded"});
+      await page.locator(".apresentacao__foto--principal").evaluate(image => image.decode().catch(() => {}));
       const scroll=await page.evaluate(() => ({width:document.documentElement.scrollWidth,viewport:innerWidth}));
       assert.ok(scroll.width <= scroll.viewport+2,JSON.stringify(scroll));
       assert.equal(await page.locator(".cabecalho__logo-link").count(),1);
@@ -84,8 +85,8 @@ test("Gráficos reiniciam quando retornam à janela", async()=>{
     await skill.scrollIntoViewIfNeeded();
     await page.waitForTimeout(1500);
     assert.equal(await skill.locator(".skill-percentage").textContent(),"85%");
-    await page.evaluate(()=>window.scrollTo(0,0));
-    await page.waitForTimeout(300);
+    await page.evaluate(()=>window.scrollTo({top:0,behavior:"instant"}));
+    await page.waitForFunction(() => window.scrollY < 20);
     assert.equal(await skill.locator(".skill-percentage").textContent(),"0%");
     await skill.scrollIntoViewIfNeeded();
     await page.waitForTimeout(1500);
