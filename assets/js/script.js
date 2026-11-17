@@ -29,34 +29,70 @@ document.addEventListener("DOMContentLoaded", () => {
   syncTop();
   topButton?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: scrollBehavior }));
 
+  // Cada gráfico é observado separadamente: em celulares a seção completa
+  // pode ser maior que a viewport, impedindo thresholds relativos à seção.
   const radius = 70;
   const circumference = 2 * Math.PI * radius;
   const skills = [...document.querySelectorAll(".skill-circle")];
+  const initialized = new WeakSet();
+
+  function animateSkill(skill) {
+    if (initialized.has(skill)) return;
+    initialized.add(skill);
+    const circle = skill.querySelector(".progress-circle");
+    const percentageLabel = skill.querySelector(".skill-percentage");
+    const target = Number(skill.dataset.percentageValue) || 0;
+    if (!circle || !percentageLabel) return;
+    const finalOffset = circumference * (1 - target / 100);
+
+    // Com movimento reduzido, apresentar diretamente o valor correto.
+    if (reducedMotion) {
+      circle.style.strokeDashoffset = String(finalOffset);
+      percentageLabel.textContent = target + "%";
+      return;
+    }
+
+    // Início no próximo ciclo de pintura, garantindo a transição até mesmo
+    // quando o usuário chega à seção imediatamente após o carregamento.
+    const duration = 1200;
+    let startTime = null;
+    function tick(now) {
+      if (startTime === null) startTime = now;
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      circle.style.strokeDashoffset = String(circumference - (circumference - finalOffset) * easeOut);
+      percentageLabel.textContent = Math.round(target * easeOut) + "%";
+      if (progress < 1) window.requestAnimationFrame(tick);
+    }
+    window.requestAnimationFrame(tick);
+  }
+
   skills.forEach(skill => {
     const name = skill.dataset.skill || "Habilidade";
     const percentage = Math.max(0, Math.min(100, Number(skill.dataset.percentage) || 0));
+    skill.dataset.percentageValue = String(percentage);
     skill.setAttribute("role", "img");
     skill.setAttribute("aria-label", name + ": nível ilustrativo de " + percentage + "%");
-    skill.innerHTML = `<h3>${name}</h3><div class="circle-wrapper"><svg viewBox="0 0 160 160" aria-hidden="true" focusable="false"><circle class="background-circle" cx="80" cy="80" r="70"></circle><circle class="progress-circle" cx="80" cy="80" r="70"></circle></svg><div class="skill-percentage">${percentage}%</div></div>`;
+    skill.innerHTML = `<h3>${name}</h3><div class="circle-wrapper"><svg viewBox="0 0 160 160" aria-hidden="true" focusable="false"><circle class="background-circle" cx="80" cy="80" r="70"></circle><circle class="progress-circle" cx="80" cy="80" r="70"></circle></svg><div class="skill-percentage">0%</div></div>`;
     const circle = skill.querySelector(".progress-circle");
     circle.style.strokeDasharray = String(circumference);
     circle.style.strokeDashoffset = String(circumference);
     circle.style.stroke = skill.dataset.color || "#fff";
-    skill.dataset.target = String(circumference * (1 - percentage / 100));
   });
-  const reveal = () => skills.forEach(skill => {
-    const circle = skill.querySelector(".progress-circle");
-    if (circle) circle.style.strokeDashoffset = skill.dataset.target;
-  });
+
   if ("IntersectionObserver" in window) {
-    const section = document.getElementById("habilidades-web");
-    if (section) {
-      const observer = new IntersectionObserver(entries => {
-        if (entries.some(entry => entry.isIntersecting)) { reveal(); observer.disconnect(); }
-      }, { threshold: 0.15 });
-      observer.observe(section);
-    }
-  } else reveal();
+    const skillObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        animateSkill(entry.target);
+        skillObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.01, rootMargin: "0px 0px 40px 0px" });
+    skills.forEach(skill => skillObserver.observe(skill));
+  } else {
+    // Fallback para navegadores sem IntersectionObserver.
+    skills.forEach(animateSkill);
+  }
 
   const modal = document.getElementById("modal");
   const modalImage = document.getElementById("modal-image");
