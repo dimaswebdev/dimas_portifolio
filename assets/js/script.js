@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const circle = skill.querySelector(".progress-circle");
     circle.style.strokeDasharray = String(circumference);
     circle.style.strokeDashoffset = String(circumference);
-    circle.style.stroke = skill.dataset.color || "#fff";
+    // A cor do progresso fica no CSS para contraste uniforme no mobile.
   });
 
   function updateSkillVisibility(skill, isVisible) {
