@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     rel="stylesheet"
@@ -17,7 +17,7 @@
     type="image/x-icon"
   />
   <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
   <title>Dimas | Design gráfico e desenvolvimento web</title>
@@ -29,6 +29,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
   <!-- Menu -->
   <header class="cabecalho">
     <div class="cabecalho__container">
@@ -36,7 +37,7 @@
       <img
         class="cabecalho__logo"
         src="./assets/img/dimas-logo.png"
-        alt="Logo-dimas"
+        alt="Dimas Designer"
        loading="eager" />
 
       <!-- Redes sociais (aparecem apenas em telas pequenas) -->
@@ -105,13 +106,14 @@
   </header>
 
   <!-- Seção de Apresentação -->
+  <main id="conteudo">
   <section class="apresentacao">
     <div class="apresentacao__container">
       <img
         class="apresentacao__foto apresentacao__foto--principal"
         src="./assets/img/dimas-3d.png"
         alt="Foto de perfil de Dimas"
-       loading="eager" />
+        loading="eager" fetchpriority="high" decoding="async" />
       <div class="apresentacao__container-info">
         <h1 class="apresentacao__titulo">
           Olá, sou Dimas, designer gráfico e desenvolvedor web
@@ -153,7 +155,7 @@
         class="sobre-mim__foto"
         src="./assets/img/dimas-bonitao.png"
         alt="Foto de perfil de Dimas"
-       loading="lazy" />
+       loading="lazy" decoding="async" />
       <div class="sobre-mim__container-info">
         <h2 class="sobre-mim__titulo">Sobre mim</h2>
         <p class="sobre-mim__texto">
@@ -248,7 +250,7 @@
             class="hobbies__icone"
             src="./assets/img/desenhar.png"
             alt="Desenhar"
-           loading="lazy" />
+           loading="lazy" decoding="async" />
           <p class="hobbies__nome">Desenhar</p>
         </li>
         <li class="hobbies__elemento">
@@ -256,7 +258,7 @@
             class="hobbies__icone"
             src="./assets/img/teclado.png"
             alt="Tocar violão e teclado"
-           loading="lazy" />
+           loading="lazy" decoding="async" />
           <p class="hobbies__nome">Tocar violão e teclado</p>
         </li>
         <li class="hobbies__elemento">
@@ -264,7 +266,7 @@
             class="hobbies__icone"
             src="./assets/img/abra-o-livro.png"
             alt="Ler livros"
-           loading="lazy" />
+           loading="lazy" decoding="async" />
           <p class="hobbies__nome">Ler livros</p>
         </li>
       </ul>
@@ -281,7 +283,7 @@
             class="formacao__icone"
             src="./assets/img/iesf - funlec.png"
             alt="IESF"
-           loading="lazy" />
+           loading="lazy" decoding="async" />
           <div>
             <h3 class="formacao__nome">Artes Visuais</h3>
             <p class="formacao__detalhe">2012 - IESF/FUNLEC</p>
@@ -292,7 +294,7 @@
             class="formacao__icone"
             src="./assets/img/oracle - one.png"
             alt="Alura"
-           loading="lazy" />
+           loading="lazy" decoding="async" />
           <div>
             <h3 class="formacao__nome">Oracle ONE - Desenvolvimento Web</h3>
             <p class="formacao__detalhe">2024 - Alura</p>
@@ -321,11 +323,11 @@
               src="./assets/img/uana-01.jpeg"
               alt="Projeto de identidade visual Uaná"
               data-index="0"
-             loading="lazy" />
+             loading="lazy" decoding="async" />
             <div class="title">Projeto Uaná</div>
           </div>
           <div class="gallery-item">
-            <img src="./assets/img/ink.jpeg" alt="Projeto gráfico Ink" data-index="1"  loading="lazy" />
+            <img src="./assets/img/ink.jpeg" alt="Projeto gráfico Ink" data-index="1"  loading="lazy" decoding="async" />
             <div class="title">Projeto Ink</div>
           </div>
           <div class="gallery-item">
@@ -333,7 +335,7 @@
               src="./assets/img/urbbox-01.jpeg"
               alt="Projeto gráfico Urbbox"
               data-index="2"
-             loading="lazy" />
+             loading="lazy" decoding="async" />
             <div class="title">Projeto Urbbox</div>
           </div>
         </div>
@@ -353,7 +355,7 @@
               src="./assets/img/portifolio-dimas.jpg"
               alt="Captura do portfólio de Dimas"
               data-index="0"
-             loading="lazy" />
+             loading="lazy" decoding="async" />
             <div class="title">Portifólio Dimas</div>
           </div>
           <div class="gallery-item">
@@ -361,7 +363,7 @@
               src="./assets/img/criptex.jpg"
               alt="Captura do projeto Criptex"
               data-index="1"
-             loading="lazy" />
+             loading="lazy" decoding="async" />
             <div class="title">
               <a
                 href="https://dimaswebdev.github.io/criptex/"
@@ -374,7 +376,7 @@
               src="./assets/img/github-voyager.jpg"
               alt="Captura do projeto GitHubVoyager"
               data-index="2"
-             loading="lazy" />
+             loading="lazy" decoding="async" />
             <div class="title">
               <a href="https://githubvoyager.vercel.app/" target="_blank" rel="noopener noreferrer"
                 >GithubVoyager</a
@@ -413,16 +415,18 @@
           src="./assets/img/dimas-logo.png"
           alt="Logo do Dimas"
           class="rodape__logo"
-         loading="lazy" />
+         loading="lazy" decoding="async" />
         <p class="rodape__texto">
           © Desenvolvido por Dimas Designer / AluraOne - 2024
         </p>
       </div>
   </section>
 
+  </main>
+
   <!-- Botão de Voltar ao Topo -->
   <button id="botao-voltar-topo" type="button" aria-label="Voltar ao topo">
-    <img src="./assets/img/seta.png" alt="Voltar ao topo"  loading="lazy" />
+    <img src="./assets/img/seta.png" alt="Voltar ao topo"  loading="lazy" decoding="async" />
   </button>
 
 
