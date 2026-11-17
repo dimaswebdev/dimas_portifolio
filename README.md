@@ -1,86 +1,59 @@
-# Portfólio Dimas — revisão técnica V2
+# DIMAS DESIGNER — Portfólio V3
 
-Versão evolutiva do portfólio criado durante o programa Oracle ONE / Alura.
+Terceira versão autoral, inteiramente redesenhada, do portfólio desenvolvido durante o programa Oracle ONE / Alura.
 
-## Preservação do projeto
+## Organização do repositório
 
-- `main`: projeto educacional original, preservado.
-- `portfolio-v2`: versão modernizada permanente, preservada separadamente da original.
-- `feature/portfolio-v2`: branch histórica de desenvolvimento usada durante a revisão.
-- [Pull Request de revisão](https://github.com/dimaswebdev/dimas_portifolio/pull/1) (não mesclar sem aprovação).
+- `main` — portfólio original desenvolvido no curso; permanece intacto.
+- `portfolio-v2` — versão modernizada em layout fullscreen; permanece intacta.
+- `portfolio-v3` — versão editorial de estúdio criativo, independente das anteriores.
 
-## Execução local
+**Nunca mesclar a V3 na `main` para preservar as três versões.**
 
-É um site estático (HTML, CSS e JavaScript). Pode ser aberto por servidor estático:
+## Direção de arte
 
-```bash
-python -m http.server 8000
-```
+Novo sistema editorial com hero de tipografia marcante, mascote 3D original, efeitos gráficos leves, projetos organizados em grade assimétrica com filtros, habilidades em barras progressivas, linha do tempo e contato em destaque.
 
-Em seguida, visitar `http://localhost:8000`.
+Identidade preservada: azul `#006494`, azul-claro `#419ae3`, ciano `#38d0dd`, azul médio `#598ae5`; logo, imagens, mascote, seis projetos, conteúdo biográfico, formação, habilidades e hobbies do portfólio anterior.
 
-## Melhorias implementadas
+Referências conceituais consultadas: materiais de design editorial e portfólio do Awwwards, com foco em tipografia, personalidade e navegação; boas práticas de acessibilidade e movimento do web.dev. O resultado é uma composição própria, não uma cópia de template.
+- https://assets.awwwards.com/assets/files/live-presentation.pdf
+- https://web.dev/learn/design/accessibility/
+- https://web.dev/articles/prefers-reduced-motion
 
-- Caminhos relativos adequados à publicação em subdiretório.
-- Refatoração do CSS, com estilos consolidados e breakpoints responsivos.
-- Gráficos SVG animados e repetíveis ao retornar à área visível.
-- Galeria ampliável, navegação por setas, fechamento por Escape e retorno do foco.
-- Menu mobile acessível e navegação por âncoras.
-- Atalho "Pular para o conteúdo", área principal semântica e foco visível.
-- Metadados básicos de SEO e melhorias nas descrições das imagens.
-- Carregamento sob demanda de imagens abaixo da primeira tela.
-- Remoção de dependências JavaScript desnecessárias.
-- Contatos funcionais em lugar do antigo formulário sem mecanismo de envio.
+## Tecnologia
 
-## Verificações estáticas realizadas
+- HTML semântico e CSS moderno (Grid, Flexbox, clamp, container responsivo, custom properties)
+- JavaScript nativo: filtro dos seis projetos, lightbox com elemento `dialog`, teclado, navegação com estado ativo, menu mobile, IntersectionObserver e barras animadas
+- Movimento reduzido respeitado com `prefers-reduced-motion`
+- Fontes: Space Grotesk e DM Sans, com fallback
+- Sem dependência de framework JS pesado; prioriza desempenho e manutenção
 
-- Sintaxe do JavaScript: aprovada.
-- Delimitadores de CSS: consistentes.
-- IDs HTML: sem duplicações.
-- Links de navegação interna: destinos existentes.
-- Presença da lógica de repetição dos gráficos: confirmada.
+Arquivos exclusivos da V3: `assets/css/v3.css` e `assets/js/v3.js`.
 
-## Rotina de qualidade (CI)
+## Publicação
 
-Um fluxo de GitHub Actions está configurado em `.github/workflows/portfolio-quality.yml` para executar, em atualizações da `portfolio-v2`:
+Prévia automática vinculada à branch: https://dimas-portifolio-git-portfolio-v3-dimaswebdevs-projects.vercel.app
 
-- Testes automatizados em Chromium com Playwright (celular, notebook e desktop).
-- Verificação de navegação, logo, galeria, ordem das seções e reinício dos gráficos.
-- Auditoria Lighthouse, com relatório JSON disponível como artefato da execução.
+A publicação pode estar sujeita à proteção de acesso de prévias da Vercel.
 
-Comandos locais após `npm install` e `npx playwright install chromium`:
+## Testes de qualidade
+
+O workflow `.github/workflows/portfolio-quality.yml` foi adaptado para `portfolio-v3`, com testes Playwright de visualização responsiva (320, 390, 1280 e 1440 px), menu, filtros, galeria, habilidades e auditoria Lighthouse.
 
 ```bash
+npm install
+npx playwright install chromium
 npm run qa
 ```
 
-Para auditoria Lighthouse, mantenha `node scripts/serve.mjs` executando em outro terminal e execute:
+Para Lighthouse, execute `node scripts/serve.mjs` em outro terminal e, depois, `npm run audit`.
 
-```bash
-npm run audit
-```
+**Status de validação:** HTML com seções equilibradas, links internos e IDs conferidos; sintaxe de JavaScript e chaves CSS verificadas. Publicação Vercel pronta. Testes de navegador e Lighthouse ainda precisam de execução e análise confirmadas antes de se alegar resultados numéricos.
 
-**Importante:** a configuração de CI foi adicionada, mas o resultado da execução remota ainda deve ser conferido na aba Actions. Não há nota Lighthouse validada nesta documentação.
+## Aprimoramentos futuros
 
-## Melhoria de carregamento
-
-- Dimensões intrínsecas foram informadas nas imagens para as quais foi possível conferir os metadados.
-- A Vercel recebeu configuração de cache e tipo MIME correto para três imagens cuja extensão é `.jpeg`, mas os dados são WebP.
-- Imagens PNG/JPEG mais pesadas ainda precisam de compressão ou conversão efetiva; apenas ajustar HTML e cabeçalhos não reduz seus bytes.
-
-## Validação ainda necessária
-
-- Inspecionar visualmente todos os componentes em celular, tablet e desktop após refatoração.
-- Testar a galeria e navegação por teclado em navegadores reais.
-- Executar Lighthouse, auditoria WCAG e verificar contraste efetivo.
-- Converter/comprimir arquivos de imagem pesados após revisão visual; os originais ainda estão no repositório.
-- Conferir disponibilidade e adequação dos canais de contato.
-- Revisar direitos e informações do currículo, fotografias e projetos.
-- Avaliar substituição de Font Awesome por ícones locais, se necessário.
-
-## Publicações
-
-- Original (branch `main`): https://dimas-portifolio.vercel.app
-- Modernizada (branch `portfolio-v2`): https://dimas-portifolio-git-portfolio-v2-dimaswebdevs-projects.vercel.app
-
-A versão educacional original continua intacta na branch `main`. Não mesclar `portfolio-v2` em `main`, pois as duas versões devem coexistir.
+- Testar a V3 visualmente em vários navegadores e dispositivos físicos
+- Comprimir imagens principais e gerar WebP/AVIF compatíveis sem perder qualidade
+- Revisar descrições e links de cada projeto com estudos de caso reais
+- Configurar domínio personalizado e indicadores de Core Web Vitals
