@@ -10,6 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
   });
+  const homeLink = document.querySelector(".cabecalho__logo-link");
+  function scrollToStart(event) {
+    event.preventDefault();
+    document.getElementById("inicio")?.scrollIntoView({ behavior: scrollBehavior, block: "start" });
+    if (location.hash !== "#inicio") history.pushState(null, "", "#inicio");
+    nav?.classList.remove("aberto");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Abrir menu");
+    scheduleNavigationSync();
+  }
+  homeLink?.addEventListener("click", scrollToStart);
+  toggle?.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      nav?.classList.remove("aberto");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Abrir menu");
+    }
+  });
+
   document.querySelectorAll(".navegacao__elemento a").forEach(link => {
     link.addEventListener("click", event => {
       const selector = link.getAttribute("href");
@@ -41,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const bounds = section.getBoundingClientRect();
       return bounds.top <= probeY && bounds.bottom > probeY;
     });
-    linkedSections.forEach(({ link }) => {
+    sectionLinks.forEach(link => {
       if (current?.link === link) link.setAttribute("aria-current", "location");
       else link.removeAttribute("aria-current");
     });
