@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="preload" as="image" href="./assets/img/dimas-3d.png" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
@@ -16,10 +17,10 @@
     href="./assets/img/dimas-designer-logo.png"
     type="image/png"
   />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Fontes com display swap, sem impedir a pintura inicial. -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
   <title>Dimas | Design gráfico e desenvolvimento web</title>
   <meta name="description" content="Conheça os projetos de Dimas em design gráfico, identidade visual, ilustração e desenvolvimento web." />
   <meta name="theme-color" content="#006494" />
