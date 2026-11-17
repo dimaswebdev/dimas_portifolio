@@ -5,7 +5,8 @@ Versão evolutiva do portfólio criado durante o programa Oracle ONE / Alura.
 ## Preservação do projeto
 
 - `main`: projeto educacional original, preservado.
-- `feature/portfolio-v2`: revisão técnica e visual independente.
+- `portfolio-v2`: versão modernizada permanente, preservada separadamente da original.
+- `feature/portfolio-v2`: branch histórica de desenvolvimento usada durante a revisão.
 - [Pull Request de revisão](https://github.com/dimaswebdev/dimas_portifolio/pull/1) (não mesclar sem aprovação).
 
 ## Execução local
@@ -49,4 +50,9 @@ Em seguida, visitar `http://localhost:8000`.
 - Revisar direitos e informações do currículo, fotografias e projetos.
 - Avaliar substituição de Font Awesome por ícones locais, se necessário.
 
-A versão educacional original continua intacta na branch `main`.
+## Publicações
+
+- Original (branch `main`): https://dimas-portifolio.vercel.app
+- Modernizada (branch `portfolio-v2`): implantação de prévia da Vercel vinculada à branch permanente.
+
+A versão educacional original continua intacta na branch `main`. Não mesclar `portfolio-v2` em `main`, pois as duas versões devem coexistir.
