@@ -1,451 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <link rel="preload" as="image" href="./assets/img/dimas-3d.png" fetchpriority="high" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  <!-- Ícones secundários não bloqueiam a primeira renderização. -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" /></noscript>
-  <link
-    rel="icon"
-    href="./assets/img/dimas-designer-logo.png"
-    type="image/png"
-  />
-  <!-- Fontes com display swap, sem impedir a pintura inicial. -->
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-  <title>Dimas | Design gráfico e desenvolvimento web</title>
-  <meta name="description" content="Conheça os projetos de Dimas em design gráfico, identidade visual, ilustração e desenvolvimento web." />
-  <meta name="theme-color" content="#006494" />
-  <meta property="og:title" content="Dimas | Design e Desenvolvimento Web" />
-  <meta property="og:description" content="Portfólio de projetos de design gráfico e desenvolvimento web." />
-  <meta property="og:type" content="website" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#006494">
+  <meta name="description" content="Dimas Designer — portfólio autoral de design gráfico, identidade visual, ilustração, experiências digitais e desenvolvimento web.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dimas Designer — Design que ganha vida">
+  <meta property="og:description" content="Design gráfico, ilustração e experiências digitais. Explore os trabalhos de Dimas.">
+  <meta property="og:image" content="https://dimas-portifolio-git-portfolio-v3-dimaswebdevs-projects.vercel.app/assets/img/dimas-3d.png">
+  <link rel="icon" type="image/png" href="./assets/img/dimas-designer-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="./assets/img/dimas-3d.png" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/v3.css">
+  <script src="./assets/js/v3.js" defer></script>
+  <title>Dimas Designer® — Estúdio criativo & desenvolvimento web</title>
 </head>
-
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
-  <!-- Menu -->
-  <header class="cabecalho">
-    <div class="cabecalho__container">
-      <!-- Logo -->
-      <a class="cabecalho__logo-link" href="#inicio" aria-label="Dimas Designer — voltar ao início" title="Voltar ao início">
-        <img class="cabecalho__logo" src="./assets/img/dimas-logo.png" alt="" width="42" height="42" loading="eager" />
-      </a>
-
-      <!-- Redes sociais (aparecem apenas em telas pequenas) -->
-      <div class="cabecalho__redes">
-        <a
-          href="https://github.com/dimaswebdev"
-          target="_blank" rel="noopener noreferrer"
-          aria-label="GitHub"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/dimas-dimasdesigner/"
-          target="_blank" rel="noopener noreferrer"
-          aria-label="LinkedIn"
-        >
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a
-          href="https://www.instagram.com/dimas_bm193/"
-          target="_blank" rel="noopener noreferrer"
-          aria-label="Instagram"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a
-            href="./assets/curriculo-dimas.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Currículo"
-            >
-            <i class="fas fa-file-alt"></i>
-            </a>
-
-      </div>
-
-      <!-- Botão Hamburguer -->
-      <button class="navegacao__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
-        &#9776;
-      </button>
-
-      <!-- Navegação -->
-      <nav class="navegacao" id="menu-principal" aria-label="Navegação principal">
-        <ul class="navegacao__lista">
-          <li class="navegacao__elemento">
-            <a href="#sobre-mim">Sobre mim</a>
-          </li>
-          <li class="navegacao__elemento">
-            <a href="#habilidades-web">Habilidades</a>
-          </li>
-          <li class="navegacao__elemento">
-            <a href="#formacao">Formação</a>
-          </li>
-          <li class="navegacao__elemento">
-            <a href="#projetos">Projetos</a>
-          </li>
-          <li class="navegacao__elemento">
-            <a href="#hobbies">Hobbies</a>
-          </li>
-          <li class="navegacao__elemento">
-            <a href="#contato">Contato</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header" id="topo">
+    <a class="brand" href="#inicio" aria-label="Dimas Designer, voltar ao início">
+      <img src="./assets/img/dimas-logo.png" alt="" width="106" height="113">
+      <span>DIMAS<span class="brand-dot">.</span><small>DESIGNER / ESTÚDIO CRIATIVO</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#trabalhos">Projetos</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#trajetoria">Trajetória</a>
+    </nav>
+    <a class="header-cta" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+    <button class="mobile-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu" type="button"><span></span><span></span></button>
   </header>
-
-  <!-- Barra social fixa, reservada para desktop; versão mobile usa os ícones do cabeçalho. -->
-  <nav class="social-rail" aria-label="Redes sociais e currículo">
-    <a href="https://github.com/dimaswebdev" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-    <a href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-    <a href="https://www.instagram.com/dimas_bm193/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-    <a href="./assets/curriculo-dimas.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir currículo em PDF" title="Currículo"><i class="fas fa-file-alt" aria-hidden="true"></i></a>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Navegação para celular" hidden>
+    <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#trabalhos">Projetos</a><a href="#especialidades">Especialidades</a><a href="#trajetoria">Trajetória</a><a href="#contato">Contato</a>
   </nav>
-
-  <!-- Seção de Apresentação -->
   <main id="conteudo">
-  <section class="apresentacao" id="inicio">
-    <div class="apresentacao__container">
-      <img
-        class="apresentacao__foto apresentacao__foto--principal"
-        src="./assets/img/dimas-3d.png"
-        alt="Ilustração tridimensional de Dimas com materiais de desenho"
-        loading="eager" fetchpriority="high" decoding="async" />
-      <div class="apresentacao__container-info">
-        <h1 class="apresentacao__titulo">
-          Olá, sou Dimas, designer gráfico e desenvolvedor web
-        </h1>
-        <p class="apresentacao__subtitulo">
-          Sou formado em Artes Visuais e Designer Gráfico com mais de dez anos
-          de experiência. Participei do programa Oracle ONE na Alura, desenvolvendo competências em tecnologia e desenvolvimento web.
-        </p>
-        <ul class="redes">
-          <li class="redes__elemento">
-            <a href="https://github.com/dimaswebdev" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github redes__icone"></i>
-            </a>
-          </li>
-          <li class="redes__elemento">
-            <a href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-linkedin redes__icone"></i>
-            </a>
-          </li>
-          <li class="redes__elemento">
-            <a href="https://www.instagram.com/dimas_bm193/" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-instagram redes__icone"></i>
-            </a>
-          </li>
-          <li class="redes__elemento">
-            <a href="./assets/curriculo-dimas.pdf" target="_blank" rel="noopener noreferrer">
-              <i class="fas fa-file-alt redes__icone"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção Sobre Mim -->
-  <section class="sobre-mim" id="sobre-mim">
-    <div class="sobre-mim__container">
-      <img
-        class="sobre-mim__foto"
-        src="./assets/img/dimas-bonitao.png"
-        alt="Foto de perfil de Dimas"
-       loading="lazy" decoding="async" />
-      <div class="sobre-mim__container-info">
-        <h2 class="sobre-mim__titulo">Sobre mim</h2>
-        <p class="sobre-mim__texto">
-          Atualmente sou 1º SGT no Corpo de Bombeiros Militar de Mato Grosso do
-          Sul, atuando na área administrativa e em apoio ao atendimento externo.
-          Além disso, tenho experiência em design gráfico e busco sempre inovar,
-          seja criando layouts modernos para sites ou desenvolvendo personagens
-          3D no estilo Disney Pixar.
-        </p>
-        <p class="sobre-mim__texto">
-          Busco constante aprimoramento, aprendendo sobre novas tecnologias e
-          expandindo meu repertório artístico. Meu trabalho é uma forma de
-          expressão e, ao mesmo tempo, um desafio que me permite contribuir para
-          o mundo criativo.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Habilidades -->
-  <section class="habilidades" id="habilidades-web">
-    <div class="habilidades__container">
-      <h2 class="habilidades__titulo">Habilidades Web</h2>
-      <div class="skills-container">
-        <!-- Habilidades Web -->
-        <div
-          class="skill-circle"
-          data-skill="HTML"
-          data-percentage="85"
-          data-color="#FFFFFF"
-        ></div>
-        <div
-          class="skill-circle"
-          data-skill="CSS"
-          data-percentage="80"
-          data-color="#FFFFFF"
-        ></div>
-        <div
-          class="skill-circle"
-          data-skill="JavaScript"
-          data-percentage="75"
-          data-color="#FFFFFF"
-        ></div>
-        <div
-          class="skill-circle"
-          data-skill="React"
-          data-percentage="70"
-          data-color="#FFFFFF"
-        ></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Segunda tela de habilidades: evita amontoar 8 gráficos na mesma altura. -->
-  <section class="habilidades habilidades--design" id="habilidades-design" data-nav-target="habilidades-web">
-    <div class="habilidades__container">
-      <h2 class="habilidades__titulo">Habilidades Designer Gráfico</h2>
-      <div class="skills-container">
-        <!-- Habilidades Designer Gráfico -->
-        <div
-          class="skill-circle"
-          data-skill="Photoshop"
-          data-percentage="85"
-          data-color="#FFFFFF"
-        ></div>
-        <div
-          class="skill-circle"
-          data-skill="Illustrator"
-          data-percentage="80"
-          data-color="#FFFFFF"
-        ></div>
-        <div
-          class="skill-circle"
-          data-skill="UI/UX"
-          data-percentage="75"
-          data-color="#FFFFFF"
-        ></div>
-        <div
-          class="skill-circle"
-          data-skill="3D"
-          data-percentage="70"
-          data-color="#FFFFFF"
-        ></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Formação Acadêmica -->
-  <section class="formacao" id="formacao">
-    <div class="formacao__container">
-      <h2 class="formacao__titulo">Formação Acadêmica</h2>
-      <ul class="formacao__lista">
-        <li class="formacao__elemento">
-          <img
-            class="formacao__icone"
-            src="./assets/img/iesf - funlec.png"
-            alt="IESF"
-           loading="lazy" decoding="async" width="130" height="130" />
-          <div>
-            <h3 class="formacao__nome">Artes Visuais</h3>
-            <p class="formacao__detalhe">2012 - IESF/FUNLEC</p>
-          </div>
-        </li>
-        <li class="formacao__elemento">
-          <img
-            class="formacao__icone"
-            src="./assets/img/oracle - one.png"
-            alt="Alura"
-           loading="lazy" decoding="async" width="308" height="163" />
-          <div>
-            <h3 class="formacao__nome">Oracle ONE - Desenvolvimento Web</h3>
-            <p class="formacao__detalhe">2024 - Alura</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Seção de Projetos -->
-  <section class="projetos" id="projetos">
-    <div class="projetos__container">
-      <h2 class="projetos__titulo">Experiências Profissionais e Projetos</h2>
-
-      <!-- Galeria de Design Gráfico e Ilustração -->
-      <div class="projetos__conteiner">
-        <h3 class="projetos__nome">Design Gráfico e Ilustração</h3>
-        <p class="projetos__descricao">
-          Mais de dez anos de experiência criando soluções visuais para empresas
-          e organizações, incluindo desenvolvimento de identidades visuais,
-          layouts e ilustrações.
-        </p>
-        <div class="gallery">
-          <div class="gallery-item">
-            <img
-              src="./assets/img/uana-01.jpeg"
-              alt="Projeto de identidade visual Uaná"
-              data-index="0"
-             loading="lazy" decoding="async" width="781" height="784" />
-            <div class="title">Projeto Uaná</div>
-          </div>
-          <div class="gallery-item">
-            <img src="./assets/img/ink.jpeg" alt="Projeto gráfico Ink" data-index="1"  loading="lazy" decoding="async" width="784" height="784" />
-            <div class="title">Projeto Ink</div>
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./assets/img/urbbox-01.jpeg"
-              alt="Projeto gráfico Urbbox"
-              data-index="2"
-             loading="lazy" decoding="async" width="786" height="784" />
-            <div class="title">Projeto Urbbox</div>
-          </div>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> PORTFÓLIO / EDIÇÃO 03 <span class="eyebrow-line"></span> ARTE + TECNOLOGIA</p>
+        <h1 id="hero-title">Ideias que<br>viram <em>impacto.</em></h1>
+        <p class="hero-lead">Olá, sou Dimas, <strong>designer gráfico e desenvolvedor web.</strong> Transformo criatividade em experiências visuais e digitais.</p>
+        <div class="hero-actions">
+          <a href="#trabalhos" class="btn btn-primary">Explorar projetos <span aria-hidden="true">↗</span></a>
+          <a href="#sobre" class="btn btn-text">Conheça minha história <span aria-hidden="true">↓</span></a>
         </div>
+        <div class="hero-signature"><span>01 / 06</span><span class="signature-line"></span><span>DESIGN É MOVIMENTO.</span></div>
       </div>
-    </div>
-  </section>
+      <div class="hero-visual" aria-label="Mascote 3D segurando um pincel">
+        <div class="hero-orbit orbit-one" aria-hidden="true"></div><div class="hero-orbit orbit-two" aria-hidden="true"></div>
+        <span class="hero-visual-label top-label">CRIAÇÃO SEM LIMITES ↗</span>
+        <img class="mascot" src="./assets/img/dimas-3d.png" alt="Mascote 3D de Dimas, sorrindo e segurando um pincel com tinta amarela" fetchpriority="high" decoding="async">
+        <span class="hero-visual-label bottom-label">PERSONAGEM ORIGINAL • DIMAS</span>
+        <span class="hero-spark spark-one" aria-hidden="true">✳</span><span class="hero-spark spark-two" aria-hidden="true">✦</span>
+      </div>
+      <a class="scroll-cue" href="#sobre">ROLE PARA DESCOBRIR <span aria-hidden="true">↓</span></a>
+      <div class="hero-side-label" aria-hidden="true">ESTÚDIO CRIATIVO — PORTFÓLIO 2026</div>
+    </section>
 
-  <!-- Segunda tela de projetos: galeria individual, organizada e navegável. -->
-  <section class="projetos projetos--web" id="projetos-web" data-nav-target="projetos">
-    <div class="projetos__container">
-      <h2 class="projetos__titulo">Projetos de Desenvolvimento Web</h2>
-      <div class="projetos__conteiner">
-        <h3 class="projetos__nome">Desenvolvimento Web</h3>
-        <p class="projetos__descricao">
-          Participação em projetos web utilizando HTML, CSS, JavaScript, PHP e
-          React. Foco na criação de sites responsivos e funcionais para uma
-          excelente experiência do usuário.
-        </p>
-        <div class="gallery">
-          <div class="gallery-item">
-            <img
-              src="./assets/img/portifolio-dimas.jpg"
-              alt="Captura do portfólio de Dimas"
-              data-index="0"
-             loading="lazy" decoding="async" width="1898" height="1075" />
-            <div class="title">Portifólio Dimas</div>
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./assets/img/criptex.jpg"
-              alt="Captura do projeto Criptex"
-              data-index="1"
-             loading="lazy" decoding="async" width="1920" height="1080" />
-            <div class="title">
-              <a
-                href="https://dimaswebdev.github.io/criptex/"
-                target="_blank" rel="noopener noreferrer"
-              >Criptex</a>
-            </div>
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./assets/img/github-voyager.jpg"
-              alt="Captura do projeto GitHubVoyager"
-              data-index="2"
-             loading="lazy" decoding="async" />
-            <div class="title">
-              <a href="https://githubvoyager.vercel.app/" target="_blank" rel="noopener noreferrer"
-                >GithubVoyager</a
-              >
-            </div>
-          </div>
+    <div class="marquee" aria-label="Design gráfico, ilustração, desenvolvimento web e identidade visual">
+      <div class="marquee-track" aria-hidden="true"><span>DESIGN GRÁFICO ✳ ILUSTRAÇÃO ✳ DESENVOLVIMENTO WEB ✳ IDENTIDADE VISUAL ✳ EXPERIÊNCIAS DIGITAIS ✳ </span><span>DESIGN GRÁFICO ✳ ILUSTRAÇÃO ✳ DESENVOLVIMENTO WEB ✳ IDENTIDADE VISUAL ✳ EXPERIÊNCIAS DIGITAIS ✳ </span></div>
+    </div>
+
+    <section class="section about" id="sobre" aria-labelledby="about-title">
+      <div class="section-index"><span>01 — QUEM SOU</span><span>UMA MENTE, MÚLTIPLAS LINGUAGENS.</span></div>
+      <div class="about-grid">
+        <div class="about-intro" data-reveal><p class="overline">PRAZER, SOU O DIMAS.</p><h2 id="about-title">Criativo por <span>natureza.</span><br>Curioso por <span>escolha.</span></h2>
+          <p class="about-first">Sou formado em Artes Visuais e Designer Gráfico com mais de dez anos de experiência. Participei do programa Oracle ONE na Alura, desenvolvendo competências em tecnologia e desenvolvimento web.</p>
+          <p>Atualmente sou 1º SGT no Corpo de Bombeiros Militar de Mato Grosso do Sul, atuando na área administrativa e em apoio ao atendimento externo. Além disso, tenho experiência em design gráfico e busco sempre inovar, seja criando layouts modernos para sites ou desenvolvendo personagens 3D no estilo Disney Pixar.</p>
+          <p>Busco constante aprimoramento, aprendendo sobre novas tecnologias e expandindo meu repertório artístico. Meu trabalho é uma forma de expressão e, ao mesmo tempo, um desafio que me permite contribuir para o mundo criativo.</p>
+          <a class="inline-link" href="./assets/curriculo-dimas.pdf" target="_blank" rel="noopener noreferrer">Conheça meu currículo <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="about-photo-wrap" data-reveal><div class="about-photo"><img src="./assets/img/dimas-bonitao.png" alt="Retrato de Dimas" loading="lazy" decoding="async"><span class="photo-caption">O CRIADOR POR TRÁS DAS IDEIAS</span></div><div class="about-stamp">10<span>+</span><small>ANOS DE EXPERIÊNCIA</small></div></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Visualização do projeto" aria-hidden="true">
-    <button class="close" type="button" aria-label="Fechar imagem">&times;</button>
-    <div class="controls">
-      <button id="prev" type="button" aria-label="Imagem anterior">&#10094;</button>
-      <button id="next" type="button" aria-label="Próxima imagem">&#10095;</button>
-    </div>
-    <img id="modal-image" alt="" />
-  </div>
+    <section class="section work" id="trabalhos" aria-labelledby="work-title">
+      <div class="section-index"><span>02 — PORTFÓLIO SELECIONADO</span><span>DO CONCEITO AO RESULTADO.</span></div>
+      <div class="section-heading" data-reveal><div><p class="overline">UMA AMOSTRA DO QUE FAÇO</p><h2 id="work-title">Trabalhos que <em>falam.</em></h2></div><p>Mais de dez anos de experiência criando soluções visuais para empresas e organizações, incluindo desenvolvimento de identidades visuais, layouts e ilustrações.</p></div>
+      <div class="work-filter" role="group" aria-label="Filtrar projetos"><button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Todos <span>06</span></button><button type="button" class="filter" data-filter="design" aria-pressed="false">Design gráfico <span>03</span></button><button type="button" class="filter" data-filter="web" aria-pressed="false">Desenvolvimento web <span>03</span></button></div>
+      <div class="project-grid">
+        <article class="project-card project-featured" data-category="design" data-reveal><button class="project-preview" type="button" data-project="0" aria-label="Ampliar o projeto Uaná"><img src="./assets/img/uana-01.jpeg" alt="Projeto de identidade visual Uaná" loading="lazy" decoding="async" width="781" height="784"><span class="project-open" aria-hidden="true">↗</span></button><div class="project-meta"><div><span>01 / IDENTIDADE VISUAL</span><h3>Projeto Uaná</h3></div><span class="card-arrow" aria-hidden="true">↗</span></div></article>
+        <article class="project-card" data-category="design" data-reveal><button class="project-preview" type="button" data-project="1" aria-label="Ampliar o projeto Ink"><img src="./assets/img/ink.jpeg" alt="Projeto gráfico Ink" loading="lazy" decoding="async" width="784" height="784"><span class="project-open" aria-hidden="true">↗</span></button><div class="project-meta"><div><span>02 / DESIGN GRÁFICO</span><h3>Projeto Ink</h3></div><span class="card-arrow" aria-hidden="true">↗</span></div></article>
+        <article class="project-card" data-category="design" data-reveal><button class="project-preview" type="button" data-project="2" aria-label="Ampliar o projeto Urbbox"><img src="./assets/img/urbbox-01.jpeg" alt="Projeto gráfico Urbbox" loading="lazy" decoding="async" width="786" height="784"><span class="project-open" aria-hidden="true">↗</span></button><div class="project-meta"><div><span>03 / DESIGN GRÁFICO</span><h3>Projeto Urbbox</h3></div><span class="card-arrow" aria-hidden="true">↗</span></div></article>
+        <article class="project-card" data-category="web" data-reveal><button class="project-preview" type="button" data-project="3" aria-label="Ampliar Portfólio Dimas"><img src="./assets/img/portifolio-dimas.jpg" alt="Captura do portfólio de Dimas" loading="lazy" decoding="async" width="1898" height="1075"><span class="project-open" aria-hidden="true">↗</span></button><div class="project-meta"><div><span>04 / DESENVOLVIMENTO WEB</span><h3>Portfólio Dimas</h3></div><span class="card-arrow" aria-hidden="true">↗</span></div></article>
+        <article class="project-card" data-category="web" data-reveal><button class="project-preview" type="button" data-project="4" aria-label="Ampliar projeto Criptex"><img src="./assets/img/criptex.jpg" alt="Captura do projeto Criptex" loading="lazy" decoding="async" width="1920" height="1080"><span class="project-open" aria-hidden="true">↗</span></button><div class="project-meta"><div><span>05 / DESENVOLVIMENTO WEB</span><h3>Criptex</h3><a href="https://dimaswebdev.github.io/criptex/" target="_blank" rel="noopener noreferrer" class="project-live">Visitar projeto ↗</a></div><span class="card-arrow" aria-hidden="true">↗</span></div></article>
+        <article class="project-card" data-category="web" data-reveal><button class="project-preview" type="button" data-project="5" aria-label="Ampliar projeto GitHubVoyager"><img src="./assets/img/github-voyager.jpg" alt="Captura do projeto GitHubVoyager" loading="lazy" decoding="async"><span class="project-open" aria-hidden="true">↗</span></button><div class="project-meta"><div><span>06 / DESENVOLVIMENTO WEB</span><h3>GithubVoyager</h3><a href="https://githubvoyager.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-live">Visitar projeto ↗</a></div><span class="card-arrow" aria-hidden="true">↗</span></div></article>
+      </div><p class="work-note">Uma seleção de projetos de design gráfico e web. Clique nas imagens para explorar.</p>
+    </section>
 
-  <!-- Seção de Hobbies -->
-  <section class="hobbies" id="hobbies">
-    <div class="hobbies__container">
-      <h2 class="hobbies__titulo">Hobbies</h2>
-      <ul class="hobbies__lista">
-        <li class="hobbies__elemento">
-          <img
-            class="hobbies__icone"
-            src="./assets/img/desenhar.png"
-            alt="Desenhar"
-           loading="lazy" decoding="async" width="512" height="512" />
-          <p class="hobbies__nome">Desenhar</p>
-        </li>
-        <li class="hobbies__elemento">
-          <img
-            class="hobbies__icone"
-            src="./assets/img/teclado.png"
-            alt="Tocar violão e teclado"
-           loading="lazy" decoding="async" width="512" height="512" />
-          <p class="hobbies__nome">Tocar violão e teclado</p>
-        </li>
-        <li class="hobbies__elemento">
-          <img
-            class="hobbies__icone"
-            src="./assets/img/abra-o-livro.png"
-            alt="Ler livros"
-           loading="lazy" decoding="async" width="512" height="512" />
-          <p class="hobbies__nome">Ler livros</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Seção de Contato -->
-  <section class="contato" id="contato">
-    <div class="contato__container">
-      <h2 class="contato__titulo">Contato</h2>
-      <div class="contato__alternativas">
-        <p>Tem um projeto em mente? Entre em contato pelos meus canais profissionais.</p>
-        <div class="contato__acoes">
-          <a href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank" rel="noopener noreferrer">Conversar no LinkedIn</a>
-          <a href="https://github.com/dimaswebdev" target="_blank" rel="noopener noreferrer">Conhecer meu GitHub</a>
-        </div>
+    <section class="section expertise" id="especialidades" aria-labelledby="expertise-title">
+      <div class="section-index"><span>03 — MINHAS FERRAMENTAS</span><span>CRIAÇÃO E CÓDIGO, LADO A LADO.</span></div>
+      <div class="section-heading" data-reveal><div><p class="overline">O QUE EU TRAGO PARA CADA PROJETO</p><h2 id="expertise-title">Do pixel ao <em>código.</em></h2></div><p>Participação em projetos web utilizando HTML, CSS, JavaScript, PHP e React. Foco na criação de sites responsivos e funcionais para uma excelente experiência do usuário.</p></div>
+      <div class="expertise-grid">
+        <div class="expertise-block" data-reveal><div class="expertise-top"><span class="expertise-icon" aria-hidden="true">⌘</span><span>01 / DIGITAL</span></div><h3>Desenvolvimento Web</h3><p>Interfaces que unem clareza, funcionalidade e experiência.</p><div class="skill-list"><div class="skill-item" data-level="85"><div><span>HTML</span><b>85%</b></div><div class="skill-track"><i></i></div></div><div class="skill-item" data-level="80"><div><span>CSS</span><b>80%</b></div><div class="skill-track"><i></i></div></div><div class="skill-item" data-level="75"><div><span>JavaScript</span><b>75%</b></div><div class="skill-track"><i></i></div></div><div class="skill-item" data-level="70"><div><span>React</span><b>70%</b></div><div class="skill-track"><i></i></div></div></div></div>
+        <div class="expertise-block visual-block" data-reveal><div class="expertise-top"><span class="expertise-icon" aria-hidden="true">✳</span><span>02 / VISUAL</span></div><h3>Design Gráfico</h3><p>Identidades, ilustrações e experiências que permanecem.</p><div class="skill-list"><div class="skill-item" data-level="85"><div><span>Photoshop</span><b>85%</b></div><div class="skill-track"><i></i></div></div><div class="skill-item" data-level="80"><div><span>Illustrator</span><b>80%</b></div><div class="skill-track"><i></i></div></div><div class="skill-item" data-level="75"><div><span>UI/UX</span><b>75%</b></div><div class="skill-track"><i></i></div></div><div class="skill-item" data-level="70"><div><span>3D</span><b>70%</b></div><div class="skill-track"><i></i></div></div></div></div>
       </div>
-    </div>
+    </section>
 
-    <div class="rodape__container">
-        <img
-          src="./assets/img/dimas-logo.png"
-          alt="Logo do Dimas"
-          class="rodape__logo"
-         loading="lazy" decoding="async" width="106" height="113" />
-        <p class="rodape__texto">
-          © Desenvolvido por Dimas Designer / AluraOne - 2024
-        </p>
-      </div>
-  </section>
+    <section class="section path" id="trajetoria" aria-labelledby="path-title">
+      <div class="section-index"><span>04 — TRAJETÓRIA</span><span>APRENDER É UMA ESCOLHA CONTÍNUA.</span></div>
+      <div class="path-grid"><div data-reveal><p class="overline">MINHA FORMAÇÃO</p><h2 id="path-title">Experiência se constrói. <em>Todos os dias.</em></h2></div><div class="timeline" data-reveal><div class="timeline-item"><time datetime="2012">2012</time><div><h3>Artes Visuais</h3><p>IESF / FUNLEC</p></div><img src="./assets/img/iesf - funlec.png" alt="IESF" loading="lazy" width="130" height="130"></div><div class="timeline-item"><time datetime="2024">2024</time><div><h3>Oracle ONE — Desenvolvimento Web</h3><p>Alura / Oracle</p></div><img src="./assets/img/oracle - one.png" alt="Alura e Oracle ONE" loading="lazy" width="308" height="163"></div></div></div>
+      <div class="interests"><div class="interests-header"><span>05 — ALÉM DO TRABALHO</span><h3>Inspirações fora da tela</h3></div><div class="interests-grid"><div><img src="./assets/img/desenhar.png" alt="" loading="lazy" width="512" height="512"><span>Desenhar</span></div><div><img src="./assets/img/teclado.png" alt="" loading="lazy" width="512" height="512"><span>Tocar violão e teclado</span></div><div><img src="./assets/img/abra-o-livro.png" alt="" loading="lazy" width="512" height="512"><span>Ler livros</span></div></div></div>
+    </section>
 
+    <section class="contact" id="contato" aria-labelledby="contact-title"><div class="contact-orbit" aria-hidden="true"></div><div class="contact-inner" data-reveal><p class="overline">06 — PRÓXIMO CAPÍTULO</p><h2 id="contact-title">Tem uma ideia?<br><em>Vamos dar vida.</em></h2><p>Tem um projeto em mente? Entre em contato pelos meus canais profissionais.</p><div class="contact-actions"><a class="btn btn-dark" href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank" rel="noopener noreferrer">Conversar no LinkedIn ↗</a><a class="btn btn-outline" href="https://github.com/dimaswebdev" target="_blank" rel="noopener noreferrer">Conhecer meu GitHub ↗</a></div></div><div class="contact-decoration" aria-hidden="true">✳</div></section>
   </main>
-
-  <!-- Botão de Voltar ao Topo -->
-  <button id="botao-voltar-topo" type="button" aria-label="Voltar ao início" title="Voltar ao início">
-    <img src="./assets/img/seta.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="128" height="128" />
-  </button>
-
-
-  <!-- Scripts -->
-  <script src="./assets/js/script.js" defer></script>
+  <footer class="footer"><div class="footer-top"><a class="footer-brand" href="#inicio"><img src="./assets/img/dimas-logo.png" alt="" width="106" height="113"><span>DIMAS.</span></a><p>© Desenvolvido por Dimas Designer / AluraOne - 2024</p><a href="#inicio">Voltar ao topo ↑</a></div><div class="footer-bottom"><span>DESIGN GRÁFICO • DESENVOLVIMENTO WEB</span><div><a href="https://github.com/dimaswebdev" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://www.instagram.com/dimas_bm193/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="./assets/curriculo-dimas.pdf" target="_blank" rel="noopener noreferrer">Currículo ↗</a></div><span>PORTFÓLIO / V3</span></div></footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Visualização ampliada do projeto"><div class="lightbox-top"><span id="lightbox-counter">01 / 06</span><button type="button" id="lightbox-close" aria-label="Fechar visualização">Fechar ✕</button></div><div class="lightbox-image-wrap"><button type="button" class="lightbox-arrow" id="lightbox-prev" aria-label="Projeto anterior">←</button><img id="lightbox-image" src="" alt=""><button type="button" class="lightbox-arrow" id="lightbox-next" aria-label="Próximo projeto">→</button></div><div class="lightbox-bottom"><h3 id="lightbox-title"></h3><span>PORTFÓLIO SELECIONADO / DIMAS DESIGNER</span></div></dialog>
 </body>
 </html>
