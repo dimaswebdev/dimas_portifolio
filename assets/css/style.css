@@ -25,6 +25,9 @@ a { color: inherit; }
 img { max-width: 100%; height: auto; }
 :focus-visible { outline: 3px solid var(--foco); outline-offset: 4px; }
 [hidden] { display: none !important; }
+.skip-link { position: absolute; top: -100px; left: 1rem; z-index: 200; padding: .7rem 1rem; background: #fff; color: #063c58; font-weight: 700; border-radius: 5px; }
+.skip-link:focus { top: .5rem; }
+main { display: block; }
 section { padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem); scroll-margin-top: 80px; }
 section:nth-of-type(odd), .habilidades, .formacao, .contato {
   background: radial-gradient(circle, var(--ciano), var(--azul-medio));
