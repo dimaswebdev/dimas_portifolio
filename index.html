@@ -7,14 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    rel="stylesheet"
-  />
+  <!-- Ícones secundários não bloqueiam a primeira renderização. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" /></noscript>
   <link
     rel="icon"
     href="./assets/img/dimas-designer-logo.png"
-    type="image/x-icon"
+    type="image/png"
   />
   <link
     href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap"
