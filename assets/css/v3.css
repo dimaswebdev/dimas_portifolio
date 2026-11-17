@@ -402,3 +402,41 @@ h1,h2,h3{font-family:var(--serif-title);font-weight:700;letter-spacing:-.048em}
 @media(prefers-reduced-motion:reduce){
   .brand img,.desktop-nav a::after{transition:none}
 }
+
+
+/* V3.2 — contraste validado conceitualmente para fundos claros.
+   O gradiente usa os azuis originais em uma variação pastel, com textos escuros. */
+.hero{
+  color:#07354f;
+  background:
+    radial-gradient(ellipse at 78% 40%,rgba(255,255,255,.38),transparent 51%),
+    linear-gradient(112deg,#d5edff 0%,#9bcdf5 30%,#87deeb 67%,#c2d8ff 100%);
+}
+.hero h1,.hero-lead,.hero-lead strong{color:#07354f}
+.hero h1 em{color:#006494}
+.hero .eyebrow,.hero-signature,.scroll-cue,.hero-side-label{color:#065277}
+.hero .live-dot{background:#006494;box-shadow:0 0 0 4px rgba(0,100,148,.12)}
+.hero .eyebrow-line,.hero .signature-line{background:#267297}
+.hero .btn-primary{background:#006494;color:white;border-color:#006494}
+.hero .btn-primary:hover{background:#004e78;color:white}
+.hero .btn-text{border-color:#006494;color:#00527e;background:rgba(255,255,255,.55)}
+.hero .btn-text:hover{background:white;color:#003b59}
+.hero-grid{
+  opacity:.14;
+  background-image:
+    linear-gradient(to right,rgba(0,100,148,.12) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(0,100,148,.12) 1px,transparent 1px)
+}
+.hero-visual::before{border-color:rgba(0,100,148,.055);background:radial-gradient(circle,rgba(255,255,255,.19),transparent 67%)}
+.about-photo img{
+  -webkit-mask-image:radial-gradient(ellipse 78% 77% at 50% 49%,#000 66%,transparent 100%);
+  mask-image:radial-gradient(ellipse 78% 77% at 50% 49%,#000 66%,transparent 100%)
+}
+.contact{color:#07354f;background:linear-gradient(112deg,#d5edff 0%,#8ed8f0 55%,#b1d9fc 100%)}
+.contact .overline,.contact h2,.contact h2 em{color:#07354f}
+.contact-inner>p:not(.overline){color:#17516f}
+.contact .btn-dark{background:#006494;color:#fff;border-color:#006494}
+.contact .btn-dark:hover{background:#004e78}
+.contact .btn-outline{color:#00527e;border-color:#006494;background:#ffffff6b}
+.contact .btn-outline:hover{background:white}
+@media(max-width:900px){.hero{background:linear-gradient(160deg,#d5edff,#88d7ee 65%,#b6d6ff)}}
