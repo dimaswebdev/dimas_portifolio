@@ -1,29 +1,52 @@
-# Portfólio do Dimas
+# Portfólio Dimas — revisão técnica V2
 
-<img src="./assets/img/portifolio-dimas.jpg" alt="Projeto Web 1" data-index="0">
+Versão evolutiva do portfólio criado durante o programa Oracle ONE / Alura.
 
-## Sobre o Projeto
+## Preservação do projeto
 
-Este portfólio foi desenvolvido para apresentar as habilidades, projetos e experiências do **Dimas**, que atua como Designer Gráfico e Web Developer. Nele, você encontrará:
+- `main`: projeto educacional original, preservado.
+- `feature/portfolio-v2`: revisão técnica e visual independente.
+- [Pull Request de revisão](https://github.com/dimaswebdev/dimas_portifolio/pull/1) (não mesclar sem aprovação).
 
-- **Seção de Apresentação**: Uma breve introdução sobre o perfil profissional de Dimas.
-- **Seção Sobre Mim**: Informações sobre a formação em Artes Visuais, atuação no Corpo de Bombeiros Militar de Mato Grosso do Sul e vivências na área de design.
-- **Seção de Habilidades**: Competências na área de Desenvolvimento Web (HTML, CSS, JavaScript, React) e em Design Gráfico (Photoshop, Illustrator, UI/UX, 3D).
-- **Seção de Hobbies**: Atividades preferidas que mostram um pouco da personalidade e interesses.
-- **Seção de Formação**: Instituições e cursos concluídos para embasar o conhecimento adquirido.
-- **Seção de Projetos**: Galerias de criações em Design Gráfico, Ilustração e Desenvolvimento Web.
-- **Seção de Contato**: Formulário simples para entrar em contato direto.
+## Execução local
 
-## Tecnologias Utilizadas
+É um site estático (HTML, CSS e JavaScript). Pode ser aberto por servidor estático:
 
-- **HTML5** e **CSS3** para a estrutura e estilização das páginas;
-- **JavaScript** para adicionar interatividade e funcionalidades;
-- **Font Awesome** para ícones;
-- **Snap.svg** (biblioteca JavaScript) em conjunto com **jQuery** (em alguns trechos);
-- **Git** e **GitHub** para versionamento de código.
+```bash
+python -m http.server 8000
+```
 
-## Como Executar o Projeto
+Em seguida, visitar `http://localhost:8000`.
 
-1. **Clone** este repositório em seu ambiente local:
-   ```bash
-   git clone https://github.com/SEU-USUARIO/seu-repositorio.git
+## Melhorias implementadas
+
+- Caminhos relativos adequados à publicação em subdiretório.
+- Refatoração do CSS, com estilos consolidados e breakpoints responsivos.
+- Gráficos SVG animados e repetíveis ao retornar à área visível.
+- Galeria ampliável, navegação por setas, fechamento por Escape e retorno do foco.
+- Menu mobile acessível e navegação por âncoras.
+- Atalho "Pular para o conteúdo", área principal semântica e foco visível.
+- Metadados básicos de SEO e melhorias nas descrições das imagens.
+- Carregamento sob demanda de imagens abaixo da primeira tela.
+- Remoção de dependências JavaScript desnecessárias.
+- Contatos funcionais em lugar do antigo formulário sem mecanismo de envio.
+
+## Verificações estáticas realizadas
+
+- Sintaxe do JavaScript: aprovada.
+- Delimitadores de CSS: consistentes.
+- IDs HTML: sem duplicações.
+- Links de navegação interna: destinos existentes.
+- Presença da lógica de repetição dos gráficos: confirmada.
+
+## Validação ainda necessária
+
+- Inspecionar visualmente todos os componentes em celular, tablet e desktop após refatoração.
+- Testar a galeria e navegação por teclado em navegadores reais.
+- Executar Lighthouse, auditoria WCAG e verificar contraste efetivo.
+- Converter/comprimir arquivos de imagem pesados após revisão visual; os originais ainda estão no repositório.
+- Conferir disponibilidade e adequação dos canais de contato.
+- Revisar direitos e informações do currículo, fotografias e projetos.
+- Avaliar substituição de Font Awesome por ícones locais, se necessário.
+
+A versão educacional original continua intacta na branch `main`.
