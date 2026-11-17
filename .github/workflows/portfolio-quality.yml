@@ -30,6 +30,13 @@ jobs:
             sleep 1
           done
           npm run audit
+      - name: Guardar capturas responsivas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-portfolio-v3
+          path: artifacts/screenshots/
+          if-no-files-found: ignore
       - name: Guardar relatório Lighthouse
         if: always()
         uses: actions/upload-artifact@v4
