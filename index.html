@@ -115,7 +115,7 @@
 
   <!-- Seção de Apresentação -->
   <main id="conteudo">
-  <section class="apresentacao">
+  <section class="apresentacao" id="inicio">
     <div class="apresentacao__container">
       <img
         class="apresentacao__foto apresentacao__foto--principal"
@@ -215,7 +215,10 @@
         ></div>
       </div>
     </div>
+  </section>
 
+  <!-- Segunda tela de habilidades: evita amontoar 8 gráficos na mesma altura. -->
+  <section class="habilidades habilidades--design" id="habilidades-design" data-nav-target="habilidades-web">
     <div class="habilidades__container">
       <h2 class="habilidades__titulo">Habilidades Designer Gráfico</h2>
       <div class="skills-container">
@@ -348,8 +351,13 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Galeria de Desenvolvimento Web -->
+  <!-- Segunda tela de projetos: galeria individual, organizada e navegável. -->
+  <section class="projetos projetos--web" id="projetos-web" data-nav-target="projetos">
+    <div class="projetos__container">
+      <h2 class="projetos__titulo">Projetos de Desenvolvimento Web</h2>
       <div class="projetos__conteiner">
         <h3 class="projetos__nome">Desenvolvimento Web</h3>
         <p class="projetos__descricao">
