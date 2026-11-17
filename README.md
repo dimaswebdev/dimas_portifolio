@@ -45,7 +45,7 @@ A publicação pode estar sujeita à proteção de acesso de prévias da Vercel.
 
 ## Testes de qualidade
 
-O workflow `.github/workflows/portfolio-quality.yml` foi adaptado para `portfolio-v3`, com testes Playwright de visualização responsiva (320, 390, 1280 e 1440 px), menu, filtros, galeria, habilidades e auditoria Lighthouse.
+O workflow `.github/workflows/portfolio-quality.yml` foi adaptado para `portfolio-v3`, com testes Playwright de visualização responsiva (320×700, 390×844, 768×1024, 1280×720, 1440×900 e 1920×1080), menu, filtros, galeria, habilidades e auditoria Lighthouse. A execução configura capturas integrais de cada tamanho como artefatos em `artifacts/screenshots/`.
 
 ```bash
 npm install
