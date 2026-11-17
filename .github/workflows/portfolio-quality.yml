@@ -1,0 +1,39 @@
+name: Qualidade técnica — Portfólio V2
+on:
+  push:
+    branches: [portfolio-v2]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Dependências de QA
+        run: npm install --no-audit --no-fund
+      - name: Instalar navegador de testes
+        run: npx playwright install --with-deps chromium
+      - name: Testes de navegação e responsividade
+        run: npm run qa
+      - name: Auditoria Lighthouse
+        run: |
+          node scripts/serve.mjs > /tmp/portfolio-server.log 2>&1 &
+          for n in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run audit
+      - name: Guardar relatório Lighthouse
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-portfolio-v2
+          path: artifacts/lighthouse.json
+          if-no-files-found: ignore
