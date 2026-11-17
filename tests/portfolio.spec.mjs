@@ -5,91 +5,87 @@ import { spawn } from "node:child_process";
 
 const base = "http://127.0.0.1:4173";
 let server, browser;
-
-async function waitUntilReady() {
-  for (let attempt = 0; attempt < 60; attempt++) {
-    try { const res = await fetch(base); if (res.ok) return; } catch { /* startup */ }
-    await new Promise(r => setTimeout(r, 200));
+async function ready() {
+  for (let i=0;i<80;i++) {
+    try { const r=await fetch(base); if(r.ok)return; } catch {}
+    await new Promise(resolve => setTimeout(resolve,150));
   }
-  throw new Error("Servidor de QA não iniciou");
+  throw new Error("Servidor de testes indisponível");
 }
 before(async () => {
-  server = spawn(process.execPath,["scripts/serve.mjs"],{ stdio:"ignore", env:{...process.env,PORT:"4173"} });
-  await waitUntilReady();
-  browser = await chromium.launch({ headless: true, args:["--no-sandbox"] });
+  server=spawn(process.execPath,["scripts/serve.mjs"],{stdio:"ignore",env:{...process.env,PORT:"4173"}});
+  await ready();
+  browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
 });
-after(async () => {
-  await browser?.close();
-  server?.kill();
-});
+after(async () => {await browser?.close();server?.kill();});
 
-for (const size of [{ name:"desktop",width:1440,height:900 },{ name:"notebook",width:1280,height:720 },{ name:"celular",width:390,height:844 }]) {
-  test("Layout sem overflow horizontal: "+size.name, async () => {
-    const page=await browser.newPage({viewport:{width:size.width,height:size.height},reducedMotion:"reduce"});
+for (const viewport of [{width:1440,height:900},{width:1280,height:720},{width:390,height:844},{width:320,height:700}]) {
+  test("V3 responsiva "+viewport.width+"x"+viewport.height,async()=>{
+    const page=await browser.newPage({viewport,reducedMotion:"reduce"});
     try {
+      const errors=[];page.on("pageerror",e=>errors.push(e.message));
       await page.goto(base,{waitUntil:"domcontentloaded"});
-      await page.locator(".apresentacao__foto--principal").evaluate(image => image.decode().catch(() => {}));
-      const scroll=await page.evaluate(() => ({width:document.documentElement.scrollWidth,viewport:innerWidth}));
-      assert.ok(scroll.width <= scroll.viewport+2,JSON.stringify(scroll));
-      assert.equal(await page.locator(".cabecalho__logo-link").count(),1);
-      assert.ok(await page.locator("main > section").count() >= 7);
-    } finally { await page.close(); }
+      const metrics=await page.evaluate(()=>({viewport:innerWidth,doc:document.documentElement.scrollWidth}));
+      assert.ok(metrics.doc<=metrics.viewport+2,JSON.stringify(metrics));
+      assert.equal(await page.locator(".mascot").count(),1);
+      assert.equal(await page.locator(".project-card").count(),6);
+      assert.deepEqual(errors,[]);
+    } finally {await page.close();}
   });
 }
-
-test("Logo leva ao início a partir de Contato", async()=>{
+test("Navegação e retorno ao topo",async()=>{
   const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"reduce"});
-  try {
+  try{
     await page.goto(base);
-    await page.locator('a[href="#contato"]').first().click();
-    await page.locator(".cabecalho__logo-link").click();
+    await page.locator('.desktop-nav a[href="#trabalhos"]').click();
+    assert.equal(new URL(page.url()).hash,"#trabalhos");
+    await page.locator(".brand").click();
     assert.equal(new URL(page.url()).hash,"#inicio");
-    assert.ok(await page.evaluate(()=>scrollY < 120));
-  } finally {await page.close();}
+    assert.ok(await page.evaluate(()=>scrollY<150));
+  }finally{await page.close();}
 });
-
-test("Navegação corresponde à ordem das seções", async()=>{
+test("Menu mobile abre e fecha",async()=>{
+  const page=await browser.newPage({viewport:{width:390,height:844},reducedMotion:"reduce"});
+  try{
+    await page.goto(base);
+    await page.locator(".mobile-toggle").click();
+    assert.equal(await page.locator(".mobile-toggle").getAttribute("aria-expanded"),"true");
+    await page.locator('.mobile-menu a[href="#contato"]').click();
+    assert.equal(new URL(page.url()).hash,"#contato");
+    assert.equal(await page.locator(".mobile-toggle").getAttribute("aria-expanded"),"false");
+  }finally{await page.close();}
+});
+test("Filtragem de projetos",async()=>{
   const page=await browser.newPage();
   try {
     await page.goto(base);
-    const result=await page.evaluate(()=>{
-      const ordered=[...document.querySelectorAll('main > section[id]')].map(x=>x.dataset.navTarget||x.id);
-      const links=[...document.querySelectorAll('.navegacao__elemento a')].map(x=>x.hash.slice(1));
-      return {ordered,links};
-    });
-    const order=result.links.map(x=>result.ordered.indexOf(x));
-    assert.ok(order.every(x=>x>=0),"item sem seção: "+JSON.stringify(result));
-    assert.deepEqual(order,[...order].sort((a,b)=>a-b));
-  } finally {await page.close();}
+    await page.locator('[data-filter="web"]').click();
+    assert.equal(await page.locator(".project-card:visible").count(),3);
+    await page.locator('[data-filter="design"]').click();
+    assert.equal(await page.locator(".project-card:visible").count(),3);
+    await page.locator('[data-filter="all"]').click();
+    assert.equal(await page.locator(".project-card:visible").count(),6);
+  }finally{await page.close();}
 });
-
-test("Galeria abre, navega por teclado e fecha com Escape", async()=>{
-  const page=await browser.newPage({viewport:{width:1440,height:900}});
-  try {
+test("Lightbox abre, percorre e fecha",async()=>{
+  const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"reduce"});
+  try{
     await page.goto(base);
-    await page.locator(".gallery-trigger").first().click();
-    assert.equal(await page.locator("#modal").getAttribute("aria-hidden"),"false");
-    const first=await page.locator("#modal-image").getAttribute("src");
+    await page.locator('[data-project="0"]').click();
+    assert.equal(await page.locator("#lightbox").evaluate(x=>x.open),true);
+    assert.equal(await page.locator("#lightbox-title").textContent(),"Projeto Uaná");
     await page.keyboard.press("ArrowRight");
-    assert.notEqual(await page.locator("#modal-image").getAttribute("src"),first);
+    assert.equal(await page.locator("#lightbox-title").textContent(),"Projeto Ink");
     await page.keyboard.press("Escape");
-    assert.equal(await page.locator("#modal").getAttribute("aria-hidden"),"true");
-  } finally {await page.close();}
+    assert.equal(await page.locator("#lightbox").evaluate(x=>x.open),false);
+  }finally{await page.close();}
 });
-
-test("Gráficos reiniciam quando retornam à janela", async()=>{
-  const page=await browser.newPage({viewport:{width:390,height:844}});
-  try {
+test("Habilidades possuem percentuais coerentes",async()=>{
+  const page=await browser.newPage();
+  try{
     await page.goto(base);
-    const skill=page.locator(".skill-circle").first();
-    await skill.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(1500);
-    assert.equal(await skill.locator(".skill-percentage").textContent(),"85%");
-    await page.evaluate(()=>window.scrollTo({top:0,behavior:"instant"}));
-    await page.waitForFunction(() => window.scrollY < 20);
-    assert.equal(await skill.locator(".skill-percentage").textContent(),"0%");
-    await skill.scrollIntoViewIfNeeded();
-    await page.waitForTimeout(1500);
-    assert.equal(await skill.locator(".skill-percentage").textContent(),"85%");
-  } finally {await page.close();}
+    const levels=await page.locator(".skill-item").evaluateAll(items=>items.map(item=>[Number(item.dataset.level),item.querySelector("b")?.textContent]));
+    assert.equal(levels.length,8);
+    assert.ok(levels.every(([n,label])=>label===n+"%"));
+  }finally{await page.close();}
 });
