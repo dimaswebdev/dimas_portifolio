@@ -1,90 +1,117 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const RADIUS = 70;
-  const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
-
-  function configurarGraficosIniciais() {
-    document.querySelectorAll(".skill-circle").forEach((skill) => {
-      const skillName = skill.getAttribute("data-skill");
-      skill.innerHTML = `
-        <h2>${skillName}</h2>
-        <div class="circle-wrapper">
-          <svg>
-            <circle class="background-circle" cx="80" cy="80" r="${RADIUS}"></circle>
-            <circle class="progress-circle" cx="80" cy="80" r="${RADIUS}" style="stroke-dashoffset: ${CIRCUMFERENCE};"></circle>
-          </svg>
-          <div class="skill-percentage">0%</div>
-        </div>
-      `;
-    });
-  }
-
-  function carregarGraficos() {
-    document.querySelectorAll(".skill-circle").forEach((skill) => {
-      const percentage = skill.getAttribute("data-percentage");
-      const color = skill.getAttribute("data-color");
-      const progressCircle = skill.querySelector(".progress-circle");
-      const skillPercentage = skill.querySelector(".skill-percentage");
-
-      progressCircle.style.stroke = color;
-      progressCircle.style.strokeDasharray = CIRCUMFERENCE;
-      progressCircle.style.strokeDashoffset = CIRCUMFERENCE;
-
-      let progress = 0;
-      const interval = setInterval(() => {
-        if (progress >= percentage) {
-          clearInterval(interval);
-        } else {
-          progress++;
-          const offset = CIRCUMFERENCE - (progress / 100) * CIRCUMFERENCE;
-          progressCircle.style.strokeDashoffset = offset;
-          skillPercentage.textContent = `${progress}%`;
-        }
-      }, 30);
-    });
-  }
-
-  // Rolagem suave
-  document.querySelectorAll(".navegacao__elemento a").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetElement = document.querySelector(this.getAttribute("href"));
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
-      }
-    });
-  });
-
-  // Botão "Voltar ao Topo"
-  const botaoTopo = document.querySelector("#botao-voltar-topo");
-  window.addEventListener("scroll", function () {
-    botaoTopo.style.display = window.scrollY > 300 ? "flex" : "none";
-  });
-  botaoTopo.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // Menu Hambúrguer
-  const toggleButton = document.querySelector(".navegacao__toggle");
+"use strict";
+document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".navegacao");
-  toggleButton.addEventListener("click", () => {
-    nav.classList.toggle("aberto");
+  const toggle = document.querySelector(".navegacao__toggle");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const scrollBehavior = reducedMotion ? "instant" : "smooth";
+
+  toggle?.addEventListener("click", () => {
+    const open = nav.classList.toggle("aberto");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  });
+  document.querySelectorAll(".navegacao__elemento a").forEach(link => {
+    link.addEventListener("click", event => {
+      const selector = link.getAttribute("href");
+      const target = selector && document.querySelector(selector);
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: scrollBehavior, block: "start" });
+      nav?.classList.remove("aberto");
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Abrir menu");
+    });
   });
 
-  // Gráficos de Habilidades
-  configurarGraficosIniciais();
+  const topButton = document.getElementById("botao-voltar-topo");
+  const syncTop = () => { if (topButton) topButton.hidden = window.scrollY <= 300; };
+  window.addEventListener("scroll", syncTop, { passive: true });
+  syncTop();
+  topButton?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: scrollBehavior }));
 
-  const habilidadesSection = document.querySelector("#habilidades-web");
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setTimeout(carregarGraficos, 1000);
-          observer.disconnect();
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+  const radius = 70;
+  const circumference = 2 * Math.PI * radius;
+  const skills = [...document.querySelectorAll(".skill-circle")];
+  skills.forEach(skill => {
+    const name = skill.dataset.skill || "Habilidade";
+    const percentage = Math.max(0, Math.min(100, Number(skill.dataset.percentage) || 0));
+    skill.setAttribute("role", "img");
+    skill.setAttribute("aria-label", name + ": nível ilustrativo de " + percentage + "%");
+    skill.innerHTML = `<h3>${name}</h3><div class="circle-wrapper"><svg viewBox="0 0 160 160" aria-hidden="true" focusable="false"><circle class="background-circle" cx="80" cy="80" r="70"></circle><circle class="progress-circle" cx="80" cy="80" r="70"></circle></svg><div class="skill-percentage">${percentage}%</div></div>`;
+    const circle = skill.querySelector(".progress-circle");
+    circle.style.strokeDasharray = String(circumference);
+    circle.style.strokeDashoffset = String(circumference);
+    circle.style.stroke = skill.dataset.color || "#fff";
+    skill.dataset.target = String(circumference * (1 - percentage / 100));
+  });
+  const reveal = () => skills.forEach(skill => {
+    const circle = skill.querySelector(".progress-circle");
+    if (circle) circle.style.strokeDashoffset = skill.dataset.target;
+  });
+  if ("IntersectionObserver" in window) {
+    const section = document.getElementById("habilidades-web");
+    if (section) {
+      const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) { reveal(); observer.disconnect(); }
+      }, { threshold: 0.15 });
+      observer.observe(section);
+    }
+  } else reveal();
 
-  observer.observe(habilidadesSection);
+  const modal = document.getElementById("modal");
+  const modalImage = document.getElementById("modal-image");
+  const close = modal?.querySelector(".close");
+  const previous = document.getElementById("prev");
+  const next = document.getElementById("next");
+  const images = [...document.querySelectorAll(".gallery-item img")];
+  let activeIndex = 0;
+  let previousFocus = null;
+  function show(index) {
+    if (!images.length || !modalImage) return;
+    activeIndex = (index + images.length) % images.length;
+    modalImage.src = images[activeIndex].src;
+    modalImage.alt = images[activeIndex].alt;
+  }
+  function open(index) {
+    if (!modal) return;
+    previousFocus = document.activeElement;
+    show(index);
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    close?.focus();
+  }
+  function dismiss() {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    modalImage?.removeAttribute("src");
+    previousFocus?.focus?.();
+  }
+  images.forEach((img, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "gallery-trigger";
+    button.setAttribute("aria-label", "Ampliar: " + img.alt);
+    img.parentNode.insertBefore(button, img);
+    button.appendChild(img);
+    button.addEventListener("click", () => open(index));
+  });
+  close?.addEventListener("click", dismiss);
+  previous?.addEventListener("click", () => show(activeIndex - 1));
+  next?.addEventListener("click", () => show(activeIndex + 1));
+  modal?.addEventListener("click", event => { if (event.target === modal) dismiss(); });
+  document.addEventListener("keydown", event => {
+    if (!modal?.classList.contains("is-open")) return;
+    if (event.key === "Escape") dismiss();
+    if (event.key === "ArrowRight") show(activeIndex + 1);
+    if (event.key === "ArrowLeft") show(activeIndex - 1);
+    if (event.key === "Tab") {
+      const buttons = [close, previous, next].filter(Boolean);
+      const first = buttons[0], last = buttons[buttons.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+  });
 });
