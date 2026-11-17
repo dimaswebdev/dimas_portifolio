@@ -423,3 +423,9 @@ section h3 { line-height: 1.3; }
   .social-rail { right: clamp(10px, 1.4vw, 24px); }
   .social-rail a { background: transparent; }
 }
+
+/* O cabeçalho já é compensado por scroll-padding-top: 70px.
+   Evita somar outro deslocamento via scroll-margin no desktop. */
+@media (min-width: 1024px) {
+  main > section { scroll-margin-top: 0; }
+}
