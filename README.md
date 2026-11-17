@@ -53,6 +53,6 @@ Em seguida, visitar `http://localhost:8000`.
 ## Publicações
 
 - Original (branch `main`): https://dimas-portifolio.vercel.app
-- Modernizada (branch `portfolio-v2`): implantação de prévia da Vercel vinculada à branch permanente.
+- Modernizada (branch `portfolio-v2`): https://dimas-portifolio-git-portfolio-v2-dimaswebdevs-projects.vercel.app
 
 A versão educacional original continua intacta na branch `main`. Não mesclar `portfolio-v2` em `main`, pois as duas versões devem coexistir.
