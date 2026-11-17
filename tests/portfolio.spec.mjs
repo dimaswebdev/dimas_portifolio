@@ -2,6 +2,7 @@ import test, { before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
 import { spawn } from "node:child_process";
+import { mkdirSync } from "node:fs";
 
 const base = "http://127.0.0.1:4173";
 let server, browser;
@@ -19,7 +20,7 @@ before(async () => {
 });
 after(async () => {await browser?.close();server?.kill();});
 
-for (const viewport of [{width:1440,height:900},{width:1280,height:720},{width:390,height:844},{width:320,height:700}]) {
+for (const viewport of [{width:320,height:700},{width:390,height:844},{width:768,height:1024},{width:1280,height:720},{width:1440,height:900},{width:1920,height:1080}]) {
   test("V3 responsiva "+viewport.width+"x"+viewport.height,async()=>{
     const page=await browser.newPage({viewport,reducedMotion:"reduce"});
     try {
@@ -29,6 +30,8 @@ for (const viewport of [{width:1440,height:900},{width:1280,height:720},{width:3
       assert.ok(metrics.doc<=metrics.viewport+2,JSON.stringify(metrics));
       assert.equal(await page.locator(".mascot").count(),1);
       assert.equal(await page.locator(".project-card").count(),6);
+      mkdirSync("artifacts/screenshots",{recursive:true});
+      await page.screenshot({path:`artifacts/screenshots/v3-${viewport.width}x${viewport.height}.png`,fullPage:true});
       assert.deepEqual(errors,[]);
     } finally {await page.close();}
   });
