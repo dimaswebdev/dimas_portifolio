@@ -40,6 +40,34 @@ Em seguida, visitar `http://localhost:8000`.
 - Links de navegação interna: destinos existentes.
 - Presença da lógica de repetição dos gráficos: confirmada.
 
+## Rotina de qualidade (CI)
+
+Um fluxo de GitHub Actions está configurado em `.github/workflows/portfolio-quality.yml` para executar, em atualizações da `portfolio-v2`:
+
+- Testes automatizados em Chromium com Playwright (celular, notebook e desktop).
+- Verificação de navegação, logo, galeria, ordem das seções e reinício dos gráficos.
+- Auditoria Lighthouse, com relatório JSON disponível como artefato da execução.
+
+Comandos locais após `npm install` e `npx playwright install chromium`:
+
+```bash
+npm run qa
+```
+
+Para auditoria Lighthouse, mantenha `node scripts/serve.mjs` executando em outro terminal e execute:
+
+```bash
+npm run audit
+```
+
+**Importante:** a configuração de CI foi adicionada, mas o resultado da execução remota ainda deve ser conferido na aba Actions. Não há nota Lighthouse validada nesta documentação.
+
+## Melhoria de carregamento
+
+- Dimensões intrínsecas foram informadas nas imagens para as quais foi possível conferir os metadados.
+- A Vercel recebeu configuração de cache e tipo MIME correto para três imagens cuja extensão é `.jpeg`, mas os dados são WebP.
+- Imagens PNG/JPEG mais pesadas ainda precisam de compressão ou conversão efetiva; apenas ajustar HTML e cabeçalhos não reduz seus bytes.
+
 ## Validação ainda necessária
 
 - Inspecionar visualmente todos os componentes em celular, tablet e desktop após refatoração.
