@@ -34,37 +34,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const radius = 70;
   const circumference = 2 * Math.PI * radius;
   const skills = [...document.querySelectorAll(".skill-circle")];
-  const initialized = new WeakSet();
+  // Gráficos podem repetir a animação sempre que voltam à área visível.
+  // Cada gráfico controla seu próprio frame para não acumular animações.
+  const animationFrames = new WeakMap();
+  const visibleSkills = new WeakSet();
+
+  function resetSkill(skill) {
+    const frame = animationFrames.get(skill);
+    if (frame !== undefined) {
+      cancelAnimationFrame(frame);
+      animationFrames.delete(skill);
+    }
+    const circle = skill.querySelector(".progress-circle");
+    const label = skill.querySelector(".skill-percentage");
+    if (circle) circle.style.strokeDashoffset = String(circumference);
+    if (label) label.textContent = "0%";
+  }
 
   function animateSkill(skill) {
-    if (initialized.has(skill)) return;
-    initialized.add(skill);
+    resetSkill(skill);
     const circle = skill.querySelector(".progress-circle");
-    const percentageLabel = skill.querySelector(".skill-percentage");
+    const label = skill.querySelector(".skill-percentage");
+    if (!circle || !label) return;
     const target = Number(skill.dataset.percentageValue) || 0;
-    if (!circle || !percentageLabel) return;
     const finalOffset = circumference * (1 - target / 100);
 
-    // Com movimento reduzido, apresentar diretamente o valor correto.
     if (reducedMotion) {
       circle.style.strokeDashoffset = String(finalOffset);
-      percentageLabel.textContent = target + "%";
+      label.textContent = target + "%";
       return;
     }
 
-    // Início no próximo ciclo de pintura, garantindo a transição até mesmo
-    // quando o usuário chega à seção imediatamente após o carregamento.
     const duration = 1200;
     let startTime = null;
     function tick(now) {
       if (startTime === null) startTime = now;
       const progress = Math.min((now - startTime) / duration, 1);
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      circle.style.strokeDashoffset = String(circumference - (circumference - finalOffset) * easeOut);
-      percentageLabel.textContent = Math.round(target * easeOut) + "%";
-      if (progress < 1) window.requestAnimationFrame(tick);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      circle.style.strokeDashoffset = String(circumference - (circumference - finalOffset) * eased);
+      label.textContent = Math.round(target * eased) + "%";
+      if (progress < 1) {
+        animationFrames.set(skill, requestAnimationFrame(tick));
+      } else {
+        animationFrames.delete(skill);
+      }
     }
-    window.requestAnimationFrame(tick);
+    animationFrames.set(skill, requestAnimationFrame(tick));
   }
 
   skills.forEach(skill => {
@@ -80,18 +95,46 @@ document.addEventListener("DOMContentLoaded", () => {
     circle.style.stroke = skill.dataset.color || "#fff";
   });
 
+  function updateSkillVisibility(skill, isVisible) {
+    if (isVisible) {
+      if (!visibleSkills.has(skill)) {
+        visibleSkills.add(skill);
+        animateSkill(skill);
+      }
+    } else if (visibleSkills.has(skill)) {
+      visibleSkills.delete(skill);
+      resetSkill(skill);
+    }
+  }
+
   if ("IntersectionObserver" in window) {
     const skillObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        animateSkill(entry.target);
-        skillObserver.unobserve(entry.target);
+        // Observação permanente: ao sair, reinicia; ao entrar, anima de novo.
+        updateSkillVisibility(entry.target, entry.isIntersecting && entry.intersectionRatio >= 0.15);
       });
-    }, { threshold: 0.01, rootMargin: "0px 0px 40px 0px" });
+    }, { threshold: [0, 0.15, 0.5], rootMargin: "0px" });
     skills.forEach(skill => skillObserver.observe(skill));
   } else {
-    // Fallback para navegadores sem IntersectionObserver.
-    skills.forEach(animateSkill);
+    // Alternativa para navegadores antigos: checagem leve durante a rolagem.
+    let checkPending = false;
+    function checkSkills() {
+      checkPending = false;
+      skills.forEach(skill => {
+        const rect = skill.getBoundingClientRect();
+        const visibleHeight = Math.max(0, Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0));
+        updateSkillVisibility(skill, rect.height > 0 && visibleHeight / rect.height >= 0.15);
+      });
+    }
+    function scheduleSkillCheck() {
+      if (!checkPending) {
+        checkPending = true;
+        requestAnimationFrame(checkSkills);
+      }
+    }
+    window.addEventListener("scroll", scheduleSkillCheck, { passive: true });
+    window.addEventListener("resize", scheduleSkillCheck);
+    scheduleSkillCheck();
   }
 
   const modal = document.getElementById("modal");
