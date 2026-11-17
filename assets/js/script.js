@@ -28,9 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Realça o item correspondente à seção efetivamente visível,
   // sem forçar a rolagem (inclusive em seções mais altas que a janela).
   const sectionLinks = [...document.querySelectorAll(".navegacao__elemento a[href^='#']")];
-  const linkedSections = sectionLinks.map(link => ({
-    link, section: document.getElementById(link.hash.slice(1))
-  })).filter(item => item.section);
+  const linkedSections = [...document.querySelectorAll("main > section[id]")].map(section => {
+    const navId = section.dataset.navTarget || section.id;
+    const link = sectionLinks.find(item => item.hash.slice(1) === navId);
+    return link ? { link, section } : null;
+  }).filter(Boolean);
   let navigationFrame = null;
   function syncActiveNavigation() {
     navigationFrame = null;
