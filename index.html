@@ -34,11 +34,9 @@
   <header class="cabecalho">
     <div class="cabecalho__container">
       <!-- Logo -->
-      <img
-        class="cabecalho__logo"
-        src="./assets/img/dimas-logo.png"
-        alt="Dimas Designer"
-       loading="eager" />
+      <a class="cabecalho__logo-link" href="#inicio" aria-label="Dimas Designer — voltar ao início" title="Voltar ao início">
+        <img class="cabecalho__logo" src="./assets/img/dimas-logo.png" alt="" width="42" height="42" loading="eager" />
+      </a>
 
       <!-- Redes sociais (aparecem apenas em telas pequenas) -->
       <div class="cabecalho__redes">
@@ -251,39 +249,6 @@
     </div>
   </section>
 
-  <!-- Seção de Hobbies -->
-  <section class="hobbies" id="hobbies">
-    <div class="hobbies__container">
-      <h2 class="hobbies__titulo">Hobbies</h2>
-      <ul class="hobbies__lista">
-        <li class="hobbies__elemento">
-          <img
-            class="hobbies__icone"
-            src="./assets/img/desenhar.png"
-            alt="Desenhar"
-           loading="lazy" decoding="async" />
-          <p class="hobbies__nome">Desenhar</p>
-        </li>
-        <li class="hobbies__elemento">
-          <img
-            class="hobbies__icone"
-            src="./assets/img/teclado.png"
-            alt="Tocar violão e teclado"
-           loading="lazy" decoding="async" />
-          <p class="hobbies__nome">Tocar violão e teclado</p>
-        </li>
-        <li class="hobbies__elemento">
-          <img
-            class="hobbies__icone"
-            src="./assets/img/abra-o-livro.png"
-            alt="Ler livros"
-           loading="lazy" decoding="async" />
-          <p class="hobbies__nome">Ler livros</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
   <!-- Seção de Formação Acadêmica -->
   <section class="formacao" id="formacao">
     <div class="formacao__container">
@@ -413,6 +378,39 @@
     <img id="modal-image" alt="" />
   </div>
 
+  <!-- Seção de Hobbies -->
+  <section class="hobbies" id="hobbies">
+    <div class="hobbies__container">
+      <h2 class="hobbies__titulo">Hobbies</h2>
+      <ul class="hobbies__lista">
+        <li class="hobbies__elemento">
+          <img
+            class="hobbies__icone"
+            src="./assets/img/desenhar.png"
+            alt="Desenhar"
+           loading="lazy" decoding="async" />
+          <p class="hobbies__nome">Desenhar</p>
+        </li>
+        <li class="hobbies__elemento">
+          <img
+            class="hobbies__icone"
+            src="./assets/img/teclado.png"
+            alt="Tocar violão e teclado"
+           loading="lazy" decoding="async" />
+          <p class="hobbies__nome">Tocar violão e teclado</p>
+        </li>
+        <li class="hobbies__elemento">
+          <img
+            class="hobbies__icone"
+            src="./assets/img/abra-o-livro.png"
+            alt="Ler livros"
+           loading="lazy" decoding="async" />
+          <p class="hobbies__nome">Ler livros</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <!-- Seção de Contato -->
   <section class="contato" id="contato">
     <div class="contato__container">
@@ -441,7 +439,7 @@
   </main>
 
   <!-- Botão de Voltar ao Topo -->
-  <button id="botao-voltar-topo" type="button" aria-label="Voltar ao topo">
+  <button id="botao-voltar-topo" type="button" aria-label="Voltar ao início" title="Voltar ao início">
     <img src="./assets/img/seta.png" alt="Voltar ao topo"  loading="lazy" decoding="async" />
   </button>
 
