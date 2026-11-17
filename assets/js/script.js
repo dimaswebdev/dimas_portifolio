@@ -17,11 +17,45 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!target) return;
       event.preventDefault();
       target.scrollIntoView({ behavior: scrollBehavior, block: "start" });
+      if (window.location.hash !== selector) history.pushState(null, "", selector);
+      scheduleNavigationSync();
       nav?.classList.remove("aberto");
       toggle?.setAttribute("aria-expanded", "false");
       toggle?.setAttribute("aria-label", "Abrir menu");
     });
   });
+
+  // Realça o item correspondente à seção efetivamente visível,
+  // sem forçar a rolagem (inclusive em seções mais altas que a janela).
+  const sectionLinks = [...document.querySelectorAll(".navegacao__elemento a[href^='#']")];
+  const linkedSections = sectionLinks.map(link => ({
+    link, section: document.getElementById(link.hash.slice(1))
+  })).filter(item => item.section);
+  let navigationFrame = null;
+  function syncActiveNavigation() {
+    navigationFrame = null;
+    const probeY = Math.max(100, window.innerHeight * 0.38);
+    const current = linkedSections.find(({ section }) => {
+      const bounds = section.getBoundingClientRect();
+      return bounds.top <= probeY && bounds.bottom > probeY;
+    });
+    linkedSections.forEach(({ link }) => {
+      if (current?.link === link) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }
+  function scheduleNavigationSync() {
+    if (navigationFrame === null) navigationFrame = requestAnimationFrame(syncActiveNavigation);
+  }
+  window.addEventListener("scroll", scheduleNavigationSync, { passive: true });
+  window.addEventListener("resize", scheduleNavigationSync);
+  window.addEventListener("popstate", () => {
+    const target = window.location.hash && document.getElementById(window.location.hash.slice(1));
+    if (target) target.scrollIntoView({ behavior: scrollBehavior, block: "start" });
+    else window.scrollTo({ top: 0, behavior: scrollBehavior });
+    scheduleNavigationSync();
+  });
+  scheduleNavigationSync();
 
   const topButton = document.getElementById("botao-voltar-topo");
   const syncTop = () => { if (topButton) topButton.hidden = window.scrollY <= 300; };
