@@ -12,21 +12,27 @@ Terceira versão autoral, inteiramente redesenhada, do portfólio desenvolvido d
 
 ## Direção de arte
 
-Novo sistema editorial com hero de tipografia marcante, mascote 3D original, efeitos gráficos leves, projetos organizados em grade assimétrica com filtros, habilidades em barras progressivas, linha do tempo e contato em destaque.
+A V3 conserva sua arquitetura editorial e seus recursos interativos, mas recupera a atmosfera cromática luminosa da V2: azul e branco predominantes, gradiente azul/ciano suave, foto pessoal integrada sem moldura, grid de baixa opacidade e botões retangulares. O mascote 3D continua protagonista do hero; projetos permanecem em grade assimétrica filtrável, habilidades em barras progressivas, linha do tempo e contato em destaque.
 
 Identidade preservada: azul `#006494`, azul-claro `#419ae3`, ciano `#38d0dd`, azul médio `#598ae5`; logo, imagens, mascote, seis projetos, conteúdo biográfico, formação, habilidades e hobbies do portfólio anterior.
 
-Referências conceituais consultadas: materiais de design editorial e portfólio do Awwwards, com foco em tipografia, personalidade e navegação; boas práticas de acessibilidade e movimento do web.dev. O resultado é uma composição própria, não uma cópia de template.
-- https://assets.awwwards.com/assets/files/live-presentation.pdf
-- https://web.dev/learn/design/accessibility/
-- https://web.dev/articles/prefers-reduced-motion
+**Referências de pesquisa visual (não copiadas):**
+- Behance — portfólios minimalistas, hierarquia e estudos de caso: https://www.behance.net/gallery/241440231/Personal-Portfolio-Website-UIUX-Design
+- Behance — paletas claras com azul: https://www.behance.net/gallery/240702661/Personal-Portfolio-Landing-Page-UI-Template
+- Dribbble — tipografia editorial, fundos claros e composição: https://dribbble.com/shots/26977269-Bold-Typography-Portfolio-Website-Design
+- Pesquisa de referências: https://www.awwwards.com/websites/portfolio/
+- Acessibilidade e animações: https://web.dev/articles/prefers-reduced-motion
+
+**Tipografia escolhida:** Manrope (títulos) e Inter (textos), com fallback sem dependência de JavaScript.
+
+**Fundamentos preservados da V2:** #006494, #419AE3, #38D0DD, #598AE5 e branco. Tons pastel derivados desses azuis são usados nos grandes fundos para oferecer contraste entre texto e superfície, enquanto as cores originais continuam nos elementos da marca.
 
 ## Tecnologia
 
 - HTML semântico e CSS moderno (Grid, Flexbox, clamp, container responsivo, custom properties)
 - JavaScript nativo: filtro dos seis projetos, lightbox com elemento `dialog`, teclado, navegação com estado ativo, menu mobile, IntersectionObserver e barras animadas
 - Movimento reduzido respeitado com `prefers-reduced-motion`
-- Fontes: Space Grotesk e DM Sans, com fallback
+- Fontes: Manrope e Inter, com fallback
 - Sem dependência de framework JS pesado; prioriza desempenho e manutenção
 
 Arquivos exclusivos da V3: `assets/css/v3.css` e `assets/js/v3.js`.
@@ -49,7 +55,7 @@ npm run qa
 
 Para Lighthouse, execute `node scripts/serve.mjs` em outro terminal e, depois, `npm run audit`.
 
-**Status de validação:** HTML com seções equilibradas, links internos e IDs conferidos; sintaxe de JavaScript e chaves CSS verificadas. Publicação Vercel pronta. Testes de navegador e Lighthouse ainda precisam de execução e análise confirmadas antes de se alegar resultados numéricos.
+**Status de validação:** verificar sintaxe CSS e JS, estruturas HTML, links internos e publicação Vercel após a mudança da direção visual. Os testes de navegador e Lighthouse estão configurados, mas sua execução completa ainda precisa de confirmação; não há notas de desempenho atribuídas.
 
 ## Aprimoramentos futuros
 
