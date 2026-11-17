@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,7 +20,12 @@
     href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap"
     rel="stylesheet"
   />
-  <title>Dimas - Portfólio de Design</title>
+  <title>Dimas | Design gráfico e desenvolvimento web</title>
+  <meta name="description" content="Conheça os projetos de Dimas em design gráfico, identidade visual, ilustração e desenvolvimento web." />
+  <meta name="theme-color" content="#006494" />
+  <meta property="og:title" content="Dimas | Design e Desenvolvimento Web" />
+  <meta property="og:description" content="Portfólio de projetos de design gráfico e desenvolvimento web." />
+  <meta property="og:type" content="website" />
 </head>
 
 <body>
@@ -32,27 +37,27 @@
         class="cabecalho__logo"
         src="./assets/img/dimas-logo.png"
         alt="Logo-dimas"
-      />
+       loading="lazy" />
 
       <!-- Redes sociais (aparecem apenas em telas pequenas) -->
       <div class="cabecalho__redes">
         <a
           href="https://github.com/dimaswebdev"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           aria-label="GitHub"
         >
           <i class="fab fa-github"></i>
         </a>
         <a
           href="https://www.linkedin.com/in/dimas-dimasdesigner/"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           aria-label="LinkedIn"
         >
           <i class="fab fa-linkedin"></i>
         </a>
         <a
           href="https://www.instagram.com/dimas_bm193/"
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           aria-label="Instagram"
         >
           <i class="fab fa-instagram"></i>
@@ -69,12 +74,12 @@
       </div>
 
       <!-- Botão Hamburguer -->
-      <button class="navegacao__toggle" aria-label="Abrir menu">
+      <button class="navegacao__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
         &#9776;
       </button>
 
       <!-- Navegação -->
-      <nav class="navegacao">
+      <nav class="navegacao" id="menu-principal" aria-label="Navegação principal">
         <ul class="navegacao__lista">
           <li class="navegacao__elemento">
             <a href="#sobre-mim">Sobre mim</a>
@@ -106,34 +111,33 @@
         class="apresentacao__foto apresentacao__foto--principal"
         src="./assets/img/dimas-3d.png"
         alt="Foto de perfil de Dimas"
-      />
+       loading="lazy" />
       <div class="apresentacao__container-info">
-        <h2 class="apresentacao__titulo">
-          Olá, sou Dimas Designer Gráfico e Web Developer
-        </h2>
+        <h1 class="apresentacao__titulo">
+          Olá, sou Dimas, designer gráfico e desenvolvedor web
+        </h1>
         <p class="apresentacao__subtitulo">
           Sou formado em Artes Visuais e Designer Gráfico com mais de dez anos
-          de experiência. Atualmente estou participando do projeto Oracle ONE na
-          Alura Latam para ampliar meus conhecimentos em desenvolvimento web.
+          de experiência. Participei do programa Oracle ONE na Alura, desenvolvendo competências em tecnologia e desenvolvimento web.
         </p>
         <ul class="redes">
           <li class="redes__elemento">
-            <a href="https://github.com/dimaswebdev" target="_blank">
+            <a href="https://github.com/dimaswebdev" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-github redes__icone"></i>
             </a>
           </li>
           <li class="redes__elemento">
-            <a href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank">
+            <a href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-linkedin redes__icone"></i>
             </a>
           </li>
           <li class="redes__elemento">
-            <a href="https://www.instagram.com/dimas_bm193/" target="_blank">
+            <a href="https://www.instagram.com/dimas_bm193/" target="_blank" rel="noopener noreferrer">
               <i class="fab fa-instagram redes__icone"></i>
             </a>
           </li>
           <li class="redes__elemento">
-            <a href="./assets/curriculo-dimas.pdf" target="_blank">
+            <a href="./assets/curriculo-dimas.pdf" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-file-alt redes__icone"></i>
             </a>
           </li>
@@ -149,7 +153,7 @@
         class="sobre-mim__foto"
         src="./assets/img/dimas-bonitao.png"
         alt="Foto de perfil de Dimas"
-      />
+       loading="lazy" />
       <div class="sobre-mim__container-info">
         <h2 class="sobre-mim__titulo">Sobre mim</h2>
         <p class="sobre-mim__texto">
@@ -244,7 +248,7 @@
             class="hobbies__icone"
             src="./assets/img/desenhar.png"
             alt="Desenhar"
-          />
+           loading="lazy" />
           <p class="hobbies__nome">Desenhar</p>
         </li>
         <li class="hobbies__elemento">
@@ -252,7 +256,7 @@
             class="hobbies__icone"
             src="./assets/img/teclado.png"
             alt="Tocar violão e teclado"
-          />
+           loading="lazy" />
           <p class="hobbies__nome">Tocar violão e teclado</p>
         </li>
         <li class="hobbies__elemento">
@@ -260,7 +264,7 @@
             class="hobbies__icone"
             src="./assets/img/abra-o-livro.png"
             alt="Ler livros"
-          />
+           loading="lazy" />
           <p class="hobbies__nome">Ler livros</p>
         </li>
       </ul>
@@ -277,7 +281,7 @@
             class="formacao__icone"
             src="./assets/img/iesf - funlec.png"
             alt="IESF"
-          />
+           loading="lazy" />
           <div>
             <h3 class="formacao__nome">Artes Visuais</h3>
             <p class="formacao__detalhe">2012 - IESF/FUNLEC</p>
@@ -288,7 +292,7 @@
             class="formacao__icone"
             src="./assets/img/oracle - one.png"
             alt="Alura"
-          />
+           loading="lazy" />
           <div>
             <h3 class="formacao__nome">Oracle ONE - Desenvolvimento Web</h3>
             <p class="formacao__detalhe">2024 - Alura</p>
@@ -315,22 +319,22 @@
           <div class="gallery-item">
             <img
               src="./assets/img/uana-01.jpeg"
-              alt="Design 1"
+              alt="Projeto de identidade visual Uaná"
               data-index="0"
-            />
+             loading="lazy" />
             <div class="title">Projeto Uaná</div>
           </div>
           <div class="gallery-item">
-            <img src="./assets/img/ink.jpeg" alt="Design 2" data-index="1" />
+            <img src="./assets/img/ink.jpeg" alt="Projeto gráfico Ink" data-index="1"  loading="lazy" />
             <div class="title">Projeto Ink</div>
           </div>
           <div class="gallery-item">
             <img
               src="./assets/img/urbbox-01.jpeg"
-              alt="Design 3"
+              alt="Projeto gráfico Urbbox"
               data-index="2"
-            />
-            <div class="title">Projeto</div>
+             loading="lazy" />
+            <div class="title">Projeto Urbbox</div>
           </div>
         </div>
       </div>
@@ -347,32 +351,32 @@
           <div class="gallery-item">
             <img
               src="./assets/img/portifolio-dimas.jpg"
-              alt="Projeto Web 1"
+              alt="Captura do portfólio de Dimas"
               data-index="0"
-            />
+             loading="lazy" />
             <div class="title">Portifólio Dimas</div>
           </div>
           <div class="gallery-item">
             <img
               src="./assets/img/criptex.jpg"
-              alt="Projeto Web 2"
+              alt="Captura do projeto Criptex"
               data-index="1"
-            />
+             loading="lazy" />
             <div class="title">
               <a
                 href="https://dimaswebdev.github.io/criptex/"
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
               >Criptex</a>
             </div>
           </div>
           <div class="gallery-item">
             <img
               src="./assets/img/github-voyager.jpg"
-              alt="Projeto Web 3"
+              alt="Captura do projeto GitHubVoyager"
               data-index="2"
-            />
+             loading="lazy" />
             <div class="title">
-              <a href="https://githubvoyager.vercel.app/" target="_blank"
+              <a href="https://githubvoyager.vercel.app/" target="_blank" rel="noopener noreferrer"
                 >GithubVoyager</a
               >
             </div>
@@ -382,28 +386,26 @@
     </div>
   </section>
 
-  <div class="modal" id="modal">
-    <span class="close">&times;</span>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Visualização do projeto" aria-hidden="true">
+    <button class="close" type="button" aria-label="Fechar imagem">&times;</button>
     <div class="controls">
-      <span id="prev">&#10094;</span>
-      <span id="next">&#10095;</span>
+      <button id="prev" type="button" aria-label="Imagem anterior">&#10094;</button>
+      <button id="next" type="button" aria-label="Próxima imagem">&#10095;</button>
     </div>
-    <img id="modal-image" src="" alt="" />
+    <img id="modal-image" src="" alt=""  loading="lazy" />
   </div>
 
   <!-- Seção de Contato -->
   <section class="contato" id="contato">
     <div class="contato__container">
       <h2 class="contato__titulo">Contato</h2>
-      <form class="contato__formulario">
-        <input class="contato__campo" type="text" placeholder="Nome" />
-        <input class="contato__campo" type="email" placeholder="E-mail" />
-        <textarea
-          class="contato__campo contato__campo--textarea"
-          placeholder="Mensagem"
-        ></textarea>
-        <button class="contato__botao" type="submit">Enviar</button>
-      </form>
+      <div class="contato__alternativas">
+        <p>Tem um projeto em mente? Entre em contato pelos meus canais profissionais.</p>
+        <div class="contato__acoes">
+          <a href="https://www.linkedin.com/in/dimas-dimasdesigner/" target="_blank" rel="noopener noreferrer">Conversar no LinkedIn</a>
+          <a href="https://github.com/dimaswebdev" target="_blank" rel="noopener noreferrer">Conhecer meu GitHub</a>
+        </div>
+      </div>
     </div>
 
     <div class="rodape__container">
@@ -411,7 +413,7 @@
           src="./assets/img/dimas-logo.png"
           alt="Logo do Dimas"
           class="rodape__logo"
-        />
+         loading="lazy" />
         <p class="rodape__texto">
           © Desenvolvido por Dimas Designer / AluraOne - 2024
         </p>
@@ -419,14 +421,12 @@
   </section>
 
   <!-- Botão de Voltar ao Topo -->
-  <button id="botao-voltar-topo">
-    <img src="./assets/img/seta.png" alt="Voltar ao topo" />
+  <button id="botao-voltar-topo" type="button" aria-label="Voltar ao topo">
+    <img src="./assets/img/seta.png" alt="Voltar ao topo"  loading="lazy" />
   </button>
 
 
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
-  <script src="/assets/js/script.js"></script>
+  <script src="./assets/js/script.js" defer></script>
 </body>
 </html>
